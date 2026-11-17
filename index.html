@@ -168,6 +168,7 @@ input,textarea{font:inherit;color:inherit}
 .item:hover{transform:translateY(-2px);filter:brightness(1.04)}
 .item .pv{width:100%;height:104px;display:block;background:radial-gradient(ellipse at 50% 108%,var(--pv-ground),transparent 70%),linear-gradient(var(--pv-top),var(--pv-bot));border:2px solid var(--ol-soft);border-radius:9px;box-shadow:inset 0 4px 7px rgba(60,35,10,.4)}
 .item .nm{font-family:var(--px);font-weight:600;font-size:18px;line-height:1.1;margin:8px 3px 0}
+.item .bio{align-self:flex-start;margin:3px 3px 0;padding:0 7px;font-family:var(--px);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:#f1f6dc;background:#3f7a3c;border:1.5px solid #2a5428;border-radius:8px}
 .item .meta{display:flex;align-items:center;justify-content:space-between;margin:4px 3px 0;gap:6px}
 .cost{display:inline-flex;align-items:center;gap:5px;font-family:var(--px);font-weight:700;font-size:17px;color:var(--moss-d)}
 .cost .pxi{width:16px;height:16px}
@@ -254,6 +255,13 @@ textarea.save{width:100%;height:84px;border-radius:12px;border:2px solid var(--o
 .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 
 /* ---------- hint, toasts, inspector, dialogs ---------- */
+.zoomctl{position:fixed;z-index:14;left:50%;transform:translateX(-50%);bottom:calc(var(--gb) + 16px);display:flex;align-items:center;gap:2px;padding:4px;border-radius:14px}
+.zoomctl button{width:38px;height:36px;display:grid;place-items:center;border-radius:10px;color:var(--on-frame)}
+.zoomctl button:hover{background:rgba(255,226,190,.16)}
+.zoomctl button:active{transform:translateY(2px)}
+.zoomctl .pxi{width:20px;height:20px}
+.zoomctl .fit{width:46px;border-left:2px solid rgba(0,0,0,.28);border-right:2px solid rgba(0,0,0,.28);border-radius:0}
+@media (max-width:720px){.zoomctl{left:auto;right:var(--gr);top:calc(var(--gt) + 70px);bottom:auto;transform:none;flex-direction:column}.zoomctl .fit{width:38px;border:0;border-top:2px solid rgba(0,0,0,.28);border-bottom:2px solid rgba(0,0,0,.28)}}
 .placehint{position:fixed;z-index:19;top:calc(var(--gt) + 72px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:6px 8px 6px 18px;border-radius:18px;font-family:var(--px);font-size:15px;width:max-content;max-width:calc(100vw - 32px);animation:rise .25s ease}
 .placehint b{font-weight:700;color:var(--gold-hi)}
 .toasts{position:fixed;z-index:40;top:calc(var(--gt) + 78px);left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none}
@@ -352,6 +360,12 @@ textarea.save{width:100%;height:84px;border-radius:12px;border:2px solid var(--o
     <button class="navbtn" data-tab="mood" aria-pressed="false"><svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="0" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="9" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="0" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="9" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="7" width="1" height="1" fill="#5ab0d4"/><rect x="5" y="7" width="1" height="1" fill="#5ab0d4"/><rect x="8" y="7" width="1" height="1" fill="#5ab0d4"/><rect x="1" y="8" width="1" height="1" fill="#5ab0d4"/><rect x="4" y="8" width="1" height="1" fill="#5ab0d4"/><rect x="7" y="8" width="1" height="1" fill="#5ab0d4"/></svg><span>Mood</span></button>
   </nav>
 </header>
+
+<div class="zoomctl glass" id="zoomCtl" role="group" aria-label="Zoom">
+  <button id="zoomOut" aria-label="Zoom out" title="Zoom out (-)"><svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="4" width="1" height="1" fill="currentColor"/><rect x="2" y="4" width="1" height="1" fill="currentColor"/><rect x="3" y="4" width="1" height="1" fill="currentColor"/><rect x="4" y="4" width="1" height="1" fill="currentColor"/><rect x="5" y="4" width="1" height="1" fill="currentColor"/><rect x="6" y="4" width="1" height="1" fill="currentColor"/><rect x="7" y="4" width="1" height="1" fill="currentColor"/><rect x="8" y="4" width="1" height="1" fill="currentColor"/><rect x="1" y="5" width="1" height="1" fill="currentColor"/><rect x="2" y="5" width="1" height="1" fill="currentColor"/><rect x="3" y="5" width="1" height="1" fill="currentColor"/><rect x="4" y="5" width="1" height="1" fill="currentColor"/><rect x="5" y="5" width="1" height="1" fill="currentColor"/><rect x="6" y="5" width="1" height="1" fill="currentColor"/><rect x="7" y="5" width="1" height="1" fill="currentColor"/><rect x="8" y="5" width="1" height="1" fill="currentColor"/></svg></button>
+  <button id="zoomFit" class="fit" aria-label="See the whole garden" title="See everything (0)"><svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="1" width="1" height="1" fill="currentColor"/><rect x="2" y="1" width="1" height="1" fill="currentColor"/><rect x="3" y="1" width="1" height="1" fill="currentColor"/><rect x="6" y="1" width="1" height="1" fill="currentColor"/><rect x="7" y="1" width="1" height="1" fill="currentColor"/><rect x="8" y="1" width="1" height="1" fill="currentColor"/><rect x="1" y="2" width="1" height="1" fill="currentColor"/><rect x="8" y="2" width="1" height="1" fill="currentColor"/><rect x="1" y="3" width="1" height="1" fill="currentColor"/><rect x="8" y="3" width="1" height="1" fill="currentColor"/><rect x="1" y="6" width="1" height="1" fill="currentColor"/><rect x="8" y="6" width="1" height="1" fill="currentColor"/><rect x="1" y="7" width="1" height="1" fill="currentColor"/><rect x="8" y="7" width="1" height="1" fill="currentColor"/><rect x="1" y="8" width="1" height="1" fill="currentColor"/><rect x="2" y="8" width="1" height="1" fill="currentColor"/><rect x="3" y="8" width="1" height="1" fill="currentColor"/><rect x="6" y="8" width="1" height="1" fill="currentColor"/><rect x="7" y="8" width="1" height="1" fill="currentColor"/><rect x="8" y="8" width="1" height="1" fill="currentColor"/></svg></button>
+  <button id="zoomIn" aria-label="Zoom in" title="Zoom in (+)"><svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="1" width="1" height="1" fill="currentColor"/><rect x="5" y="1" width="1" height="1" fill="currentColor"/><rect x="4" y="2" width="1" height="1" fill="currentColor"/><rect x="5" y="2" width="1" height="1" fill="currentColor"/><rect x="4" y="3" width="1" height="1" fill="currentColor"/><rect x="5" y="3" width="1" height="1" fill="currentColor"/><rect x="1" y="4" width="1" height="1" fill="currentColor"/><rect x="2" y="4" width="1" height="1" fill="currentColor"/><rect x="3" y="4" width="1" height="1" fill="currentColor"/><rect x="4" y="4" width="1" height="1" fill="currentColor"/><rect x="5" y="4" width="1" height="1" fill="currentColor"/><rect x="6" y="4" width="1" height="1" fill="currentColor"/><rect x="7" y="4" width="1" height="1" fill="currentColor"/><rect x="8" y="4" width="1" height="1" fill="currentColor"/><rect x="1" y="5" width="1" height="1" fill="currentColor"/><rect x="2" y="5" width="1" height="1" fill="currentColor"/><rect x="3" y="5" width="1" height="1" fill="currentColor"/><rect x="4" y="5" width="1" height="1" fill="currentColor"/><rect x="5" y="5" width="1" height="1" fill="currentColor"/><rect x="6" y="5" width="1" height="1" fill="currentColor"/><rect x="7" y="5" width="1" height="1" fill="currentColor"/><rect x="8" y="5" width="1" height="1" fill="currentColor"/><rect x="4" y="6" width="1" height="1" fill="currentColor"/><rect x="5" y="6" width="1" height="1" fill="currentColor"/><rect x="4" y="7" width="1" height="1" fill="currentColor"/><rect x="5" y="7" width="1" height="1" fill="currentColor"/><rect x="4" y="8" width="1" height="1" fill="currentColor"/><rect x="5" y="8" width="1" height="1" fill="currentColor"/></svg></button>
+</div>
 
 <div id="placeHint" class="placehint glass" hidden></div>
 <div id="toasts" class="toasts" aria-live="polite"></div>
@@ -454,7 +468,7 @@ const DEFAULT_STATE = () => ({
   set: {
     weather: 'rain', master: 0.75, chime: true,
     ch: { rain: { on: false, vol: 0.7 }, wind: { on: false, vol: 0.5 }, fire: { on: false, vol: 0.5 } },
-    dev: false, dockMin: false, dockPos: null
+    dev: false, dockMin: false, dockPos: null, zoom: 1
   },
   devf: { unlockAll: false, bonusMin: 0, force: null },
   intro: false
@@ -488,12 +502,17 @@ function saveSoon() { if (!saveTimer) saveTimer = setTimeout(saveNow, 350); }
 
 /* ---------- world layout ---------- */
 const WORLD_W = 1800, WORLD_H = 900, HORIZON = 520;
+/* the world runs from WX0 to WX1. x=0..1800 is the original garden; the rainforest grows off to the west (negative x) */
+const WX0 = -1000, WX1 = 1800, WORLD_SPAN = WX1 - WX0;
+/* how rainforest-like the land is at world x: 0 in the home garden, easing up through the Meadow to 1 deep in the forest */
+const lush = x => { const t = Math.max(0, Math.min(1, (450 - x) / 800)); return t * t * (3 - 2 * t); };
 const ROWS = { far: { y: 585, sc: 0.66 }, back: { y: 640, sc: 0.78 }, mid: { y: 745, sc: 0.92 }, front: { y: 850, sc: 1.06 } };
 const REGIONS = {
   base: { name: 'Home garden', at: 0 },
-  west: { name: 'Meadow', at: 500, x0: 0, x1: 505 },
-  east: { name: 'Pond Terrace', at: 1000, x0: 1300, x1: 1800 },
-  far: { name: 'Ancient Grove', at: 2500 }
+  west: { name: 'Meadow', at: 300, x0: 0, x1: 505 },
+  east: { name: 'Pond Terrace', at: 600, x0: 1300, x1: 1800 },
+  far: { name: 'Ancient Grove', at: 2200 },
+  rain: { name: 'Rainforest', at: 1000, x0: -1000, x1: 0 }
 };
 const SLOTS = [];
 (function () {
@@ -508,6 +527,10 @@ const SLOTS = [];
   add('east', 'mid', [1470, 1690]);
   add('east', 'front', [1370, 1600]);
   add('far', 'far', [120, 330, 560, 790, 1010, 1240, 1470, 1690]);
+  /* new land is always appended so saved plants keep their slot numbers */
+  add('rain', 'back', [-700, -470, -240]);
+  add('rain', 'mid', [-840, -610, -380, -150]);
+  add('rain', 'front', [-720, -490, -260]);
 })();
 
 /* ---------- milestones ---------- */
@@ -516,11 +539,16 @@ const MILESTONES = [
   { id: 'm30', at: 30, name: 'Settling In', blurb: 'Your breathing slows to match the rain.', items: ['hydrangea', 'bench'] },
   { id: 'm60', at: 60, name: 'Steady Breath', blurb: 'An hour of quiet, carried by the wind.', items: ['bamboo', 'chime'] },
   { id: 'm100', at: 100, name: 'Hearthside', blurb: 'Warmth for the long, wet evenings.', items: ['hearth', 'lotus'] },
-  { id: 'm250', at: 250, name: 'Storm Season', blurb: 'Thunder rolls in over the far hills.', items: ['willow', 'maple'], weather: ['storm'] },
-  { id: 'm500', at: 500, name: 'The Meadow Opens', blurb: 'Mist lifts from the western meadow.', items: ['pavilion'], weather: ['petals'], region: 'west' },
-  { id: 'm1000', at: 1000, name: 'Moonlit Terrace', blurb: 'The eastern terrace wakes under the moon.', items: ['blossom'], weather: ['firefly'], region: 'east' },
-  { id: 'm1500', at: 1500, name: 'Spirit Wood', blurb: 'Something old and gentle moves between the trees.', items: ['spirit'], weather: ['aurora'] },
-  { id: 'm2500', at: 2500, name: 'The Ancient Grove', blurb: 'A hidden grove, grown quiet over a thousand rains.', items: ['cedar'], region: 'far' }
+  { id: 'm250', at: 200, name: 'Storm Season', blurb: 'Thunder rolls in over the far hills.', items: ['willow', 'maple'], weather: ['storm'] },
+  { id: 'm500', at: 300, name: 'The Meadow Opens', blurb: 'Mist lifts from the western meadow.', items: ['pavilion'], weather: ['petals'], region: 'west' },
+  { id: 'm1000', at: 600, name: 'Moonlit Terrace', blurb: 'The eastern terrace wakes under the moon.', items: ['blossom'], weather: ['firefly'], region: 'east' },
+  { id: 'm1500', at: 800, name: 'Spirit Wood', blurb: 'Something old and gentle moves between the trees.', items: ['spirit'], weather: ['aurora'] },
+  { id: 'r1000', at: 1000, name: 'The Rainforest', blurb: 'Past the meadow the air turns warm, and everything is green and enormous.', items: ['treefern'], weather: ['monsoon'], region: 'rain' },
+  { id: 'r1150', at: 1150, name: 'Broad Leaves', blurb: 'Leaves wider than you are tall catch the downpour.', items: ['monstera', 'totem'] },
+  { id: 'r1300', at: 1300, name: 'Sunbreak', blurb: 'Gold light spills through the canopy after rain.', items: ['heliconia', 'orchid'], weather: ['sunbreak'] },
+  { id: 'r1500', at: 1500, name: 'Emerald Giant', blurb: 'A true canopy tree, older than the path you walked in on.', items: ['kapok'] },
+  { id: 'r1800', at: 1800, name: 'Hanging Gardens', blurb: 'Roots and water find their own way down.', items: ['fig', 'cascade'] },
+  { id: 'm2500', at: 2200, name: 'The Ancient Grove', blurb: 'A hidden grove, grown quiet over a thousand rains.', items: ['cedar'], region: 'far' }
 ];
 function itemUnlockAt(id) { const m = MILESTONES.find(m => m.items && m.items.includes(id)); return m ? m.at : 0; }
 function weatherUnlockAt(id) { const m = MILESTONES.find(m => m.weather && m.weather.includes(id)); return m ? m.at : 0; }
@@ -1766,18 +1794,539 @@ reg({
 /* sprite & preview helpers */
 const SPR = 2;
 const spriteCache = new Map();
+let spritePx = 0;
+const SPRITE_BUDGET = 48e6;
 function getSprite(it, g, v, layer) {
   const lv = it.grow ? Math.round(g * 4) / 4 : 0;
   const key = it.id + '|' + v + '|' + lv + '|' + (layer || 'b');
-  let s = spriteCache.get(key); if (s) return s;
+  let s = spriteCache.get(key); if (s) { spriteCache.delete(key); spriteCache.set(key, s); return s; }
   const bw = it.box.w, bh = it.box.h, pad = 18;
   const cv = document.createElement('canvas'); cv.width = Math.ceil(bw * SPR); cv.height = Math.ceil((bh + pad) * SPR);
   const c = cv.getContext('2d'); c.scale(SPR, SPR); c.translate(bw / 2, bh);
   c.lineCap = 'round'; c.lineJoin = 'round';
   (layer === 'front' ? it.drawFront : it.draw)(c, lv, v);
   s = { cv, ox: cv.width / 2, oy: bh * SPR, w: cv.width, h: cv.height };
-  spriteCache.set(key, s); return s;
+  spriteCache.set(key, s); spritePx += s.w * s.h;
+  /* least-recently-used eviction keeps huge canopy sprites from exhausting memory */
+  if (spritePx > SPRITE_BUDGET) for (const [k2, v2] of spriteCache) { if (k2 === key) continue; spriteCache.delete(k2); spritePx -= v2.w * v2.h; if (spritePx <= SPRITE_BUDGET * .8) break; }
+  return s;
 }
+
+/* ============================================================
+   Rainforest flora: tree fern, monstera, heliconia, orchid
+   All items carry biome:'Rainforest' (shown as a tag in the shop).
+   ============================================================ */
+
+/* one arching fern frond with paired pinnae; ang = lean from vertical, droop = extra bend outward */
+function rfFrond(c, ang, L, droop, R, o) {
+  o = o || {};
+  const N = 26, pts = [], ths = [], sg = ang < 0 ? -1 : 1;
+  let x = 0, y = 0;
+  for (let i = 0; i <= N; i++) {
+    const t = i / N, th = ang + sg * droop * Math.pow(t, 1.5);
+    pts.push([x, y]); ths.push(th);
+    x += Math.sin(th) * L / N; y -= Math.cos(th) * L / N;
+  }
+  const hue = o.hue || 110, dk = o.dark || 0;
+  c.strokeStyle = hsl(hue - 10, 40, 24 + dk * 8); c.lineWidth = Math.max(1, L * .022); c.beginPath();
+  pts.forEach((p, i) => i ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1])); c.stroke();
+  const pl = L * .2, wd = pl * .26;
+  for (let i = 3; i <= N; i++) {
+    const t = i / N, len = pl * Math.sin(Math.PI * Math.pow(t, .75)) * (.35 + .65 * (1 - t * .55)) + 2.5;
+    const p = pts[i], th = ths[i];
+    for (const s of [-1, 1]) {
+      const sh = clamp(.5 + s * .22 * sg + (R() - .5) * .28 - t * .1 + dk * -.25, 0, 1);
+      c.save(); c.translate(p[0], p[1]); c.rotate(th + s * (1.3 - .45 * t));
+      leaf(c, len, wd, hsl(hue + (R() - .5) * 12, 58, 16 + sh * 30), hsl(hue + 8, 62, 28 + sh * 32), null);
+      c.restore();
+    }
+  }
+  c.save(); c.translate(pts[N][0], pts[N][1]); c.rotate(ths[N]); leaf(c, pl * .5, wd * .8, hsl(hue, 58, 34), hsl(hue + 8, 62, 52), null); c.restore();
+  return pts[N];
+}
+function rfFiddle(c, x, y, s, lean, R) {
+  c.save(); c.translate(x, y); c.rotate(lean);
+  c.strokeStyle = hsl(84, 60, 44); c.lineWidth = Math.max(2, s * .12); c.beginPath(); c.moveTo(0, 0);
+  const n = 22;
+  for (let i = 1; i <= n; i++) {
+    const t = i / n, r = s * (.26 * (1 - t) + .02), a = -Math.PI * .5 + t * 5.2;
+    const bx = Math.cos(a) * r - (1 - t) * 0, by = -s * (.7 * (1 - t)) + Math.sin(a) * r * .9 - s * .22;
+    c.lineTo(bx + s * .16, by);
+  }
+  c.stroke();
+  c.strokeStyle = hsl(94, 62, 66); c.lineWidth = Math.max(.8, s * .035); c.beginPath(); c.moveTo(s * .03, -s * .1); c.lineTo(s * .05, -s * .62); c.stroke();
+  c.restore();
+}
+reg({
+  id: 'treefern', name: 'Tree Fern', cat: 'flora', biome: 'Rainforest', cost: 36, grow: [12, 40, 100], box: { w: 480, h: 470 }, hw: 120, flex: .035,
+  desc: 'A fibrous trunk topped with a fountain of enormous fronds.',
+  draw(c, g, v) {
+    const k = g / 3, sd = hashStr('treefern') + v * 977, R = sub(sd, 5);
+    const H = lerp(26, 250, Math.pow(k, .85)), lean = (v - 1) * 14 * k;
+    mound(c, 0, -2, 34 + k * 40, 8 + k * 6, sub(sd, 99));
+    const pal = { base: hsl(20, 34, 22), dark: hsl(14, 40, 9), light: hsl(28, 36, 42) };
+    const tp = bez([0, 0], [lean * .2, -H * .55], [lean, -H], 14);
+    const w0 = lerp(10, 36, k), w1 = lerp(8, 22, k);
+    /* aerial root fuzz at the base */
+    for (let i = 0; i < 9; i++) { const s = (R() - .5) * 2; c.strokeStyle = hsl(18, 40, 18 + R() * 12); c.lineWidth = 1.2; c.beginPath(); c.moveTo(s * w0 * .3, -4); c.quadraticCurveTo(s * w0 * .9, 0, s * w0 * (1 + R() * .5), 2 + R() * 3); c.stroke(); }
+    trunk(c, tp, w0, w1, pal, R);
+    const nr = normals(tp);
+    const ns = Math.round(lerp(3, 22, k));
+    for (let i = 0; i < ns; i++) {
+      const t = (i + .5) / ns * .96, idx = Math.min(tp.length - 1, Math.round(t * (tp.length - 1)));
+      const p = tp[idx], wd = lerp(w0, w1, idx / (tp.length - 1)) / 2, off = (R() - .5) * wd * .9;
+      c.fillStyle = 'rgba(14,8,4,.55)'; c.beginPath(); c.ellipse(p[0] + nr[idx][0] * off, p[1] + nr[idx][1] * off, wd * .38, 2.4 + k * 1.4, (R() - .5) * .5, 0, TAU); c.fill();
+      c.fillStyle = 'rgba(200,150,90,.2)'; c.beginPath(); c.ellipse(p[0] + nr[idx][0] * off - 1, p[1] + nr[idx][1] * off - 1.6, wd * .3, 1, 0, 0, TAU); c.fill();
+      if (R() > .5) { c.strokeStyle = hsl(18, 30, 14); c.lineWidth = .9; for (let j = 0; j < 4; j++) { const q = (R() - .5) * wd * 1.6; c.beginPath(); c.moveTo(p[0] + q, p[1]); c.lineTo(p[0] + q * 1.2, p[1] + 5 + R() * 5); c.stroke(); } }
+    }
+    mossPatch(c, -w0 * .25, -H * .1, w0 * .7, R, 9); mossPatch(c, w0 * .2, -H * .32, w0 * .5, R, 6);
+    const cx = lean, cy = -H;
+    /* old brown skirt */
+    if (k > .45) for (let i = 0; i < 5; i++) {
+      const r2 = sub(sd, 60 + i), sd2 = i % 2 ? 1 : -1, a = sd2 * (1.9 + r2() * .35), L = lerp(30, 80, k) * (.8 + r2() * .4);
+      c.save(); c.translate(cx, cy + 6); c.strokeStyle = hsl(30, 40, 24 + r2() * 8); c.lineWidth = 2;
+      const e = [Math.sin(a) * L * .6, -Math.cos(a) * L * .3 + L * .45];
+      c.beginPath(); c.moveTo(0, 0); c.quadraticCurveTo(e[0] * .7, -L * .12, e[0], e[1]); c.stroke();
+      c.strokeStyle = hsl(34, 38, 34, .8); c.lineWidth = 1; for (let j = 1; j < 7; j++) { const t = j / 7, px = e[0] * t, py = lerp(0, e[1], t * t) - Math.sin(t * 3) * L * .05; c.beginPath(); c.moveTo(px, py); c.lineTo(px + sd2 * 8, py + 6); c.moveTo(px, py); c.lineTo(px - sd2 * 4, py + 7); c.stroke(); }
+      c.restore();
+    }
+    /* crown */
+    const n = Math.round(lerp(5, 15, ease(k))), list = [];
+    for (let i = 0; i < n; i++) {
+      const r2 = sub(sd, 10 + i), f = n > 1 ? i / (n - 1) : .5;
+      const ang = (f - .5) * 2 * lerp(.45, 1.55, k) + (r2() - .5) * .22;
+      list.push({ ang, L: lerp(50, 165, Math.pow(k, .8)) * (.78 + r2() * .36) * (1 - .22 * Math.abs(ang) / 1.6), droop: lerp(.3, 1.15, Math.abs(ang) / 1.6) * (.8 + k * .4), r2, hue: 100 + (r2() - .5) * 22 + Math.abs(ang) * 6 });
+    }
+    list.sort((a, b) => Math.abs(a.ang) - Math.abs(b.ang));
+    c.save(); c.translate(cx, cy);
+    list.forEach((fr, i) => rfFrond(c, fr.ang, fr.L, fr.droop, fr.r2, { hue: fr.hue, dark: 1 - i / list.length }));
+    if (k < .5) { const r2 = sub(sd, 300); rfFiddle(c, -4, -4, 20 + k * 24, -.25, r2); rfFiddle(c, 7, -2, 16 + k * 20, .3, r2); }
+    c.restore();
+  },
+  live(c, o) { dewDrops(c, o, 4 + (o.g | 0) * 3, 110 * (.35 + o.g / 4.5), 80 + o.g * 55); }
+});
+
+/* ---------- Monstera ---------- */
+const monsteraTpl = {};
+function monsteraLeaf(vr) {
+  if (monsteraTpl[vr]) return monsteraTpl[vr];
+  const S = 300, T = 380, cv = document.createElement('canvas'); cv.width = T; cv.height = T;
+  const c = cv.getContext('2d'), R = rngf(vr * 131 + 7); c.translate(T / 2, T - 52);
+  const heart = () => {
+    c.beginPath(); c.moveTo(0, -S * .06);
+    c.bezierCurveTo(S * .1, S * .2, S * .42, S * .2, S * .5, -S * .04);
+    c.bezierCurveTo(S * .62, -S * .34, S * .5, -S * .8, 0, -S);
+    c.bezierCurveTo(-S * .5, -S * .8, -S * .62, -S * .34, -S * .5, -S * .04);
+    c.bezierCurveTo(-S * .42, S * .2, -S * .1, S * .2, 0, -S * .06); c.closePath();
+  };
+  const g = c.createLinearGradient(-S * .5, 0, S * .5, 0);
+  g.addColorStop(0, hsl(138, 62, 15)); g.addColorStop(.5, hsl(132, 58, 27)); g.addColorStop(1, hsl(118, 62, 38));
+  c.fillStyle = g; heart(); c.fill();
+  c.save(); heart(); c.clip();
+  const g2 = c.createLinearGradient(0, -S, 0, 0); g2.addColorStop(0, 'rgba(190,255,120,.28)'); g2.addColorStop(.6, 'rgba(190,255,120,0)'); c.fillStyle = g2; c.fillRect(-S, -S, S * 2, S * 1.2);
+  /* lateral veins */
+  c.strokeStyle = 'rgba(210,255,170,.3)'; c.lineWidth = 1.6;
+  for (let i = 0; i < 9; i++) for (const s of [-1, 1]) { const y = -S * (.1 + i * .095); c.beginPath(); c.moveTo(0, y); c.quadraticCurveTo(s * S * .24, y - S * .08, s * S * .52, y - S * .2 - i * 2); c.stroke(); }
+  c.restore();
+  c.strokeStyle = hsl(96, 48, 62, .85); c.lineWidth = 3.2; c.beginPath(); c.moveTo(0, S * .06); c.quadraticCurveTo(2, -S * .5, 0, -S * .96); c.stroke();
+  /* fenestration: slits from the margin, holes near the midrib */
+  c.globalCompositeOperation = 'destination-out'; c.fillStyle = '#000';
+  for (const s of [-1, 1]) for (let i = 0; i < 5; i++) {
+    const y0 = -S * (.2 + i * .15) + (R() - .5) * 6, reach = S * (.17 + R() * .05), w = 15 + R() * 6;
+    const edge = S * (.62 - Math.abs(i - 1.5) * .03);
+    c.beginPath(); c.moveTo(s * reach, y0); c.lineTo(s * edge * 1.25, y0 - w * 2.1); c.lineTo(s * edge * 1.25, y0 + w * 1.2); c.closePath(); c.fill();
+    c.beginPath(); c.arc(s * reach, y0 - 2, 3.6, 0, TAU); c.fill();
+    if (i < 4 && R() > .45) { c.beginPath(); c.ellipse(s * S * (.07 + R() * .02), y0 - S * .06, 6 + R() * 3, 11 + R() * 4, s * .4, 0, TAU); c.fill(); }
+  }
+  c.globalCompositeOperation = 'source-over';
+  monsteraTpl[vr] = { cv, S, T };
+  return monsteraTpl[vr];
+}
+reg({
+  id: 'monstera', name: 'Giant Monstera', cat: 'flora', biome: 'Rainforest', cost: 28, grow: [8, 26, 64], box: { w: 440, h: 410 }, hw: 110, flex: .08,
+  desc: 'Split leaves wider than a umbrella, built to catch the downpour.',
+  draw(c, g, v) {
+    const k = g / 3, sd = hashStr('monstera') + v * 977, R = sub(sd, 3);
+    mound(c, 0, -2, 28 + k * 38, 7 + k * 6, sub(sd, 99));
+    const n = Math.round(lerp(2, 8, ease(k))), list = [];
+    for (let i = 0; i < n; i++) {
+      const r2 = sub(sd, 10 + i), f = n > 1 ? i / (n - 1) : .5;
+      const ang = (f - .5) * 2 * lerp(.4, .92, k) + (r2() - .5) * .2;
+      const Ls = lerp(26, 150, Math.pow(k, .8)) * (.7 + r2() * .5) * (1 - .18 * Math.abs(ang));
+      list.push({ ang, Ls, size: lerp(36, 148, Math.pow(k, .8)) * (.72 + r2() * .42), vr: (r2() * 3) | 0, flip: r2() > .5 ? 1 : -1, r2 });
+    }
+    list.sort((a, b) => b.Ls - a.Ls);
+    for (const l of list) {
+      const bx = (l.ang) * 10, ex = Math.sin(l.ang) * l.Ls, ey = -Math.cos(l.ang) * l.Ls * .94 - 6;
+      const pp = bez3([bx, -2], [bx * .6 + ex * .1, -l.Ls * .5], [ex * .75, ey - l.Ls * .18], [ex, ey], 14);
+      c.strokeStyle = hsl(104, 36, 22); c.lineWidth = lerp(3, 6.5, k); strokePts(c, pp);
+      c.strokeStyle = hsl(96, 44, 44, .7); c.lineWidth = lerp(1.2, 2.4, k); strokePts(c, offsetPts(pp, lerp(3, 6.5, k), lerp(3, 6.5, k), -.4));
+      const tpl = monsteraLeaf(l.vr), s = l.size / tpl.S;
+      c.save(); c.translate(ex, ey); c.rotate(l.ang * .9 + (l.flip * .08)); c.scale(l.flip * s * .96, s);
+      c.drawImage(tpl.cv, -tpl.T / 2, -(tpl.T - 52), tpl.T, tpl.T); c.restore();
+    }
+  },
+  live(c, o) { dewDrops(c, o, 3 + (o.g | 0) * 2, 120 * (.3 + o.g / 4.5), 60 + o.g * 38); }
+});
+
+/* ---------- Heliconia ---------- */
+function rfPaddle(c, base, ang, L, wid, R, hue) {
+  /* banana-style blade: arching centreline, widest at ~40%, midrib + parallel veins */
+  const ex = base[0] + Math.sin(ang) * L * .6, ey = base[1] - Math.cos(ang) * L * .95;
+  const pts = bez3(base, [base[0] + Math.sin(ang) * L * .05, base[1] - L * .6], [ex - Math.sin(ang) * L * .1, ey - L * .12], [ex + Math.sign(ang || 1) * L * .16, ey + L * .14 + Math.abs(ang) * L * .1], 18);
+  const nr = normals(pts), n = pts.length;
+  const wAt = i => { const t = i / (n - 1); return wid * Math.sin(Math.PI * Math.pow(t, .62)) * (1 - .18 * t) / 2 + .6; };
+  const side = s => pts.map((p, i) => [p[0] + nr[i][0] * wAt(i) * s, p[1] + nr[i][1] * wAt(i) * s]);
+  const A = side(1), B = side(-1);
+  const path = () => { c.beginPath(); c.moveTo(A[0][0], A[0][1]); for (let i = 1; i < n; i++) c.lineTo(A[i][0], A[i][1]); for (let i = n - 1; i >= 0; i--) c.lineTo(B[i][0], B[i][1]); c.closePath(); };
+  const g = c.createLinearGradient(base[0] - L * .4, 0, base[0] + L * .4, 0);
+  g.addColorStop(0, hsl(hue + 14, 62, 16)); g.addColorStop(.55, hsl(hue, 62, 30)); g.addColorStop(1, hsl(hue - 8, 66, 44));
+  c.fillStyle = g; path(); c.fill();
+  c.save(); path(); c.clip();
+  c.strokeStyle = 'rgba(220,255,160,.22)'; c.lineWidth = 1;
+  for (let i = 2; i < n - 1; i++) for (const s of [-1, 1]) { const p = pts[i], q = s > 0 ? A[i] : B[i]; c.beginPath(); c.moveTo(p[0], p[1]); c.lineTo(q[0] + nr[i][0] * s * 2 + (pts[i + 1][0] - p[0]) * 1.6, q[1] + nr[i][1] * s * 2 + (pts[i + 1][1] - p[1]) * 1.6); c.stroke(); }
+  /* wind-torn splits */
+  c.globalCompositeOperation = 'destination-out'; c.fillStyle = '#000';
+  for (let j = 0; j < 3; j++) { const i = 6 + ((R() * (n - 9)) | 0), s = R() > .5 ? 1 : -1, p = pts[i], q = s > 0 ? A[i] : B[i]; c.beginPath(); c.moveTo(lerp(p[0], q[0], .55), lerp(p[1], q[1], .55)); c.lineTo(q[0] + nr[i][0] * s * 4, q[1] + nr[i][1] * s * 4 + 4); c.lineTo(q[0] + nr[i][0] * s * 4 + 5, q[1] + nr[i][1] * s * 4 - 3); c.closePath(); c.fill(); }
+  c.restore(); c.globalCompositeOperation = 'source-over';
+  c.strokeStyle = hsl(80, 50, 66, .85); c.lineWidth = Math.max(1.2, wid * .035); strokePts(c, pts.slice(0, n - 1));
+}
+function rfBract(c, len, wid, flip) {
+  /* a boat-shaped lobster-claw bract: crimson, gold-edged, green-tipped */
+  const g = c.createLinearGradient(-wid, 0, wid, 0);
+  g.addColorStop(0, hsl(354, 74, 28)); g.addColorStop(.5, hsl(4, 84, 46)); g.addColorStop(1, hsl(14, 90, 60));
+  c.fillStyle = g; c.beginPath(); c.moveTo(0, 0);
+  c.bezierCurveTo(wid * 1.05, -len * .18, wid * .9, -len * .72, flip * wid * .3, -len);
+  c.bezierCurveTo(-wid * .1, -len * .7, -wid * .85, -len * .3, 0, 0); c.fill();
+  c.strokeStyle = hsl(48, 92, 56); c.lineWidth = Math.max(1, wid * .12); c.beginPath(); c.moveTo(0, 0);
+  c.bezierCurveTo(wid * 1.05, -len * .18, wid * .9, -len * .72, flip * wid * .3, -len); c.stroke();
+  c.strokeStyle = hsl(44, 90, 70, .75); c.lineWidth = Math.max(.7, wid * .05); c.beginPath(); c.moveTo(wid * .1, -len * .08); c.quadraticCurveTo(wid * .55, -len * .4, flip * wid * .2, -len * .86); c.stroke();
+  c.fillStyle = hsl(96, 60, 36); c.beginPath(); c.arc(flip * wid * .3, -len * .98, Math.max(1.4, wid * .12), 0, TAU); c.fill();
+}
+reg({
+  id: 'heliconia', name: 'Lobster-Claw', cat: 'flora', biome: 'Rainforest', cost: 36, grow: [10, 30, 76], box: { w: 400, h: 540 }, hw: 100, flex: .06,
+  desc: 'Banana-paddle leaves and scarlet claws that hang like lanterns.',
+  draw(c, g, v) {
+    const k = g / 3, sd = hashStr('heliconia') + v * 977, R = sub(sd, 3);
+    mound(c, 0, -2, 28 + k * 34, 7 + k * 5, sub(sd, 99));
+    const n = Math.round(lerp(3, 9, ease(k)));
+    const leaves = [];
+    for (let i = 0; i < n; i++) { const r2 = sub(sd, 10 + i), f = n > 1 ? i / (n - 1) : .5; leaves.push({ ang: (f - .5) * 2 * lerp(.35, .95, k) + (r2() - .5) * .15, L: lerp(40, 235, Math.pow(k, .85)) * (.74 + r2() * .36), r2 }); }
+    leaves.sort((a, b) => Math.abs(a.ang) - Math.abs(b.ang));
+    const hue = 108 + (v - 1) * 6;
+    const half = Math.ceil(n / 2);
+    leaves.slice(0, half).forEach(l => rfPaddle(c, [l.ang * 12, -2], l.ang, l.L, l.L * .26, l.r2, hue));
+    /* flower stalks */
+    const ns = k < .32 ? 0 : Math.round(lerp(1, 4, ease((k - .32) / .68)));
+    for (let s = 0; s < ns; s++) {
+      const r2 = sub(sd, 70 + s), up = s === 0 || s === 3, dir = s % 2 ? -1 : 1, Hs = lerp(70, 255, Math.pow(k, .8)) * (.78 + r2() * .26) * (up ? 1 : .9);
+      let pts;
+      if (up) pts = bez3([dir * 4, -2], [dir * 4, -Hs * .5], [dir * 10, -Hs * .85], [dir * 14, -Hs], 16);
+      else pts = bez3([dir * 6, -2], [dir * 10, -Hs * .7], [dir * (36 + k * 30), -Hs * 1.1], [dir * (56 + k * 40), -Hs * .62], 18);
+      c.strokeStyle = hsl(352, 58, 36); c.lineWidth = lerp(3, 6.5, k); strokePts(c, pts); c.strokeStyle = hsl(14, 70, 58, .6); c.lineWidth = lerp(1, 2, k); strokePts(c, offsetPts(pts, 4, 4, -.4));
+      const nb = Math.round(lerp(3, 7, ease(k)));
+      for (let b = 0; b < nb; b++) {
+        const t = (up ? .28 : .24) + (b / (nb - 1 || 1)) * (up ? .72 : .74), idx = Math.min(pts.length - 2, Math.round(t * (pts.length - 1))), p = pts[idx], q = pts[idx + 1];
+        const tang = Math.atan2(q[1] - p[1], q[0] - p[0]) + Math.PI / 2, zig = (b % 2 ? 1 : -1);
+        const bl = lerp(18, 44, Math.pow(k, .8)) * (1 - .3 * (b / nb)) * (up ? 1 : 1.05);
+        c.save(); c.translate(p[0], p[1]); c.rotate(tang * (up ? 1 : 1) + (up ? zig * .95 : zig * .85 + Math.PI * .5 * 0));
+        rfBract(c, bl, bl * .5, zig); c.restore();
+      }
+    }
+    leaves.slice(half).forEach(l => rfPaddle(c, [l.ang * 12, -2], l.ang * 1.05, l.L * .92, l.L * .26, l.r2, hue + 4));
+  },
+  live(c, o) { dewDrops(c, o, 3 + (o.g | 0) * 2, 90 * (.3 + o.g / 4.5), 90 + o.g * 55); }
+});
+
+/* ---------- Mossy-log Orchid ---------- */
+function rfOrchidFlower(c, x, y, s, rot, pal) {
+  c.save(); c.translate(x, y); c.rotate(rot);
+  const petal = (a, w, h, col) => { c.save(); c.rotate(a); c.fillStyle = col; c.beginPath(); c.moveTo(0, 0); c.bezierCurveTo(w, -h * .3, w * .9, -h * .9, 0, -h); c.bezierCurveTo(-w * .9, -h * .9, -w, -h * .3, 0, 0); c.fill(); c.restore(); };
+  petal(-2.4, s * .5, s * .95, pal.s); petal(2.4, s * .5, s * .95, pal.s); petal(0, s * .38, s * .95, pal.s);
+  petal(-1.45, s * .75, s * 1.05, pal.p); petal(1.45, s * .75, s * 1.05, pal.p);
+  c.fillStyle = pal.l; c.beginPath(); c.ellipse(0, s * .32, s * .32, s * .26, 0, 0, TAU); c.fill();
+  c.fillStyle = pal.c; c.beginPath(); c.arc(0, -s * .06, s * .13, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(255,255,255,.35)'; c.lineWidth = .7; c.beginPath(); c.arc(0, 0, s * .66, -2.3, -.8); c.stroke();
+  c.restore();
+}
+reg({
+  id: 'orchid', name: 'Log Orchid', cat: 'flora', biome: 'Rainforest', cost: 15, grow: [6, 18, 40], box: { w: 280, h: 250 }, hw: 70, flex: .045,
+  desc: 'Moth-winged blooms on a fallen, moss-padded log.',
+  draw(c, g, v) {
+    const k = g / 3, sd = hashStr('orchid') + v * 977, R = sub(sd, 3);
+    const pals = [{ p: hsl(322, 72, 62), s: hsl(330, 66, 78), l: hsl(300, 70, 34), c: hsl(48, 90, 62) }, { p: hsl(52, 30, 96), s: hsl(60, 40, 90), l: hsl(46, 88, 54), c: hsl(14, 70, 44) }, { p: hsl(18, 90, 56), s: hsl(8, 84, 52), l: hsl(46, 92, 62), c: hsl(2, 70, 32) }];
+    const pal = pals[v % 3];
+    softShadow(c, 80, 9, .4);
+    /* log */
+    const lg = c.createLinearGradient(0, -34, 0, 2); lg.addColorStop(0, hsl(28, 26, 38)); lg.addColorStop(.5, hsl(24, 28, 24)); lg.addColorStop(1, hsl(20, 30, 12));
+    c.fillStyle = lg; c.beginPath(); c.moveTo(-86, -4); c.bezierCurveTo(-90, -28, -70, -34, -30, -33); c.lineTo(60, -31); c.bezierCurveTo(90, -30, 96, -10, 88, 0); c.lineTo(-86, 1); c.closePath(); c.fill();
+    c.fillStyle = hsl(30, 22, 52); c.beginPath(); c.ellipse(-86, -16, 6, 15, 0, 0, TAU); c.fill(); c.strokeStyle = hsl(24, 24, 28); c.lineWidth = 1; c.beginPath(); c.ellipse(-86, -16, 3.5, 9, 0, 0, TAU); c.stroke();
+    c.strokeStyle = 'rgba(8,4,0,.4)'; c.lineWidth = 1; for (let i = 0; i < 8; i++) { const y = -28 + R() * 26, x = -70 + R() * 120; c.beginPath(); c.moveTo(x, y); c.lineTo(x + 10 + R() * 28, y + (R() - .5) * 2); c.stroke(); }
+    mossPatch(c, -20, -33, 100, R, 22); mossPatch(c, 50, -30, 60, R, 14); mossPatch(c, -60, -28, 36, R, 8);
+    /* strap leaves */
+    const nl = Math.round(lerp(2, 5, ease(k)));
+    for (let i = 0; i < nl; i++) {
+      const r2 = sub(sd, 10 + i), x0 = (i - (nl - 1) / 2) * 11 + 2, dir = (i - (nl - 1) / 2) / (nl / 2) || (r2() - .5), L = lerp(18, 74, Math.pow(k, .8)) * (.75 + r2() * .4);
+      const pts = bez([x0, -32], [x0 + dir * L * .45, -32 - L * .75], [x0 + dir * L * 1.1, -32 - L * .3 + L * .2], 10);
+      c.fillStyle = hsl(112, 52, 24 + r2() * 8); ribbon(c, pts, L * .26, 1.5);
+      c.strokeStyle = hsl(100, 56, 52, .6); c.lineWidth = 1; strokePts(c, offsetPts(pts, L * .26, 1.5, -.35));
+    }
+    /* flower spike */
+    if (k > .3) {
+      const Hs = lerp(40, 150, Math.pow((k - .3) / .7, .8)), nf = Math.round(lerp(1, 7, (k - .3) / .7));
+      const pts = bez3([8, -34], [14, -34 - Hs * .8], [46, -34 - Hs * 1.05], [70 + Hs * .15, -34 - Hs * .55], 16);
+      c.strokeStyle = hsl(96, 40, 30); c.lineWidth = 2.4; strokePts(c, pts);
+      for (let i = 0; i < nf; i++) {
+        const t = .38 + .62 * (nf > 1 ? i / (nf - 1) : .5), p = pts[Math.round(t * 16)], q = pts[Math.min(16, Math.round(t * 16) + 1)];
+        const sz = lerp(11, 20, Math.pow(k, .7)) * (1 - .3 * t * (i / nf)) * (.8 + .4 * (1 - i / nf)), tg = Math.atan2(q[1] - p[1], q[0] - p[0]);
+        c.strokeStyle = hsl(96, 40, 30); c.lineWidth = 1.2; c.beginPath(); c.moveTo(p[0], p[1]); c.lineTo(p[0] + Math.sin(tg) * 6, p[1] - Math.cos(tg) * 6 + 5); c.stroke();
+        rfOrchidFlower(c, p[0] + Math.sin(tg) * 6, p[1] - Math.cos(tg) * 6, sz, (R() - .5) * .5, pal);
+      }
+      c.fillStyle = hsl(84, 58, 50); for (let i = 0; i < 2; i++) { const p = pts[14 + i]; c.beginPath(); c.arc(p[0], p[1], 2.2, 0, TAU); c.fill(); }
+    }
+  },
+  live(c, o) { dewDrops(c, o, 2 + (o.g | 0), 60, 70 + o.g * 24); }
+});
+
+/* ============================================================
+   Rainforest giants and set pieces: emerald kapok, strangler fig,
+   hanging cascade, mossy totem
+   ============================================================ */
+function rfLianas(g, v, n, rx, y0, hMin, hMax, seed) {
+  const R = sub(seed, 400), out = [];
+  for (let i = 0; i < n; i++) out.push({ x: (R() - .5) * 2 * rx * .85, y: y0 + (R() - .5) * 8 + Math.abs(R() - .5) * 20, len: lerp(hMin, hMax, R()), ph: R() * TAU, th: .8 + R() * 1.1 });
+  return out;
+}
+function rfHang(c, a, t, wind, col, hi, leafy) {
+  const seg = 9, sw = (Math.sin(t * .9 + a.ph) * 4 + wind * 26) * (a.len / 120);
+  c.strokeStyle = col; c.lineWidth = a.th; c.beginPath(); c.moveTo(a.x, a.y);
+  const pts = [];
+  for (let i = 1; i <= seg; i++) { const u = i / seg, x = a.x + sw * Math.pow(u, 1.6) + Math.sin(u * 7 + a.ph) * 1.6, y = a.y + a.len * u; pts.push([x, y]); c.lineTo(x, y); }
+  c.stroke();
+  if (hi) { c.strokeStyle = hi; c.lineWidth = a.th * .4; c.beginPath(); c.moveTo(a.x - .5, a.y); pts.forEach(p => c.lineTo(p[0] - .6, p[1])); c.stroke(); }
+  if (leafy) for (let i = 1; i < pts.length; i += 2) { c.save(); c.translate(pts[i][0], pts[i][1]); c.rotate((i % 4 === 1 ? 1 : -1) * 1.15); leaf(c, 7, 2.6, hsl(104, 56, 26), hsl(100, 60, 42), null); c.restore(); }
+}
+
+/* ---------- Emerald Giant (kapok) ---------- */
+function kapokGeo(g, v) {
+  const k = g / 3, sd = hashStr('kapok') + v * 977;
+  const H = lerp(60, 400, Math.pow(k, .8)), rx = lerp(50, 290, Math.pow(k, .9)), ry = lerp(30, 125, k);
+  return { k, sd, H, rx, ry, cy: -H - ry * .28 };
+}
+reg({
+  id: 'kapok', name: 'Emerald Giant', cat: 'tree', biome: 'Rainforest', cost: 250, grow: [30, 100, 260], box: { w: 900, h: 720 }, hw: 220, flex: .008,
+  desc: 'A buttressed canopy giant with an umbrella crown and hanging lianas.',
+  draw(c, g, v) {
+    const G = kapokGeo(g, v), k = G.k, sd = G.sd, H = G.H, R = sub(sd, 5), lean = (v - 1) * 10 * k;
+    const pal = { base: hsl(34, 12, 38), dark: hsl(28, 16, 14), light: hsl(40, 14, 62) };
+    mound(c, 0, -2, 50 + k * 90, 10 + k * 8, sub(sd, 99));
+    /* buttress roots */
+    const nbut = k < .3 ? 3 : 5;
+    for (let i = 0; i < nbut; i++) {
+      const r2 = sub(sd, 20 + i), s = (i / (nbut - 1) - .5) * 2, sp = s * lerp(22, 130, k) * (.8 + r2() * .35), top = lerp(30, 150, k) * (.75 + r2() * .4);
+      const pts = bez3([s * lerp(4, 18, k), -top], [s * lerp(6, 28, k), -top * .35], [sp * .6, -top * .08], [sp, 3], 12);
+      c.fillStyle = pal.base; ribbon(c, pts, lerp(4, 16, k), lerp(10, 34, k) * (.7 + r2() * .5));
+      c.strokeStyle = pal.dark; c.globalAlpha = .45; c.lineWidth = Math.max(1, lerp(2, 5, k)); strokePts(c, offsetPts(pts, lerp(4, 16, k), lerp(10, 34, k), s > 0 ? .5 : -.5)); c.globalAlpha = 1;
+      c.strokeStyle = pal.light; c.globalAlpha = .3; c.lineWidth = 1.5; strokePts(c, offsetPts(pts, lerp(4, 16, k), lerp(10, 34, k), s > 0 ? -.5 : .5)); c.globalAlpha = 1;
+    }
+    const tp = bez([0, -6], [lean * .3, -H * .5], [lean, -H], 16), w0 = lerp(10, 66, k), w1 = lerp(8, 34, k);
+    trunk(c, tp, w0, w1, pal, R);
+    /* conical thorns on the trunk */
+    const th = Math.round(lerp(6, 40, k)); c.fillStyle = hsl(30, 14, 20);
+    for (let i = 0; i < th; i++) { const t = .1 + R() * .85, idx = Math.min(15, Math.round(t * 16)), p = tp[idx], wd = lerp(w0, w1, idx / 16) / 2, x = p[0] + (R() - .5) * wd * 1.7; c.beginPath(); c.moveTo(x - 2, p[1]); c.lineTo(x + (x > p[0] ? 4 : -4), p[1] - 2); c.lineTo(x + 2, p[1] + 3); c.fill(); }
+    mossPatch(c, -w0 * .4, -H * .06, w0, R, 12); mossPatch(c, w0 * .3, -H * .22, w0 * .6, R, 8);
+    /* limbs */
+    const nl = Math.round(lerp(3, 6, k)), fx = lean, fy = -H, tips = [];
+    for (let i = 0; i < nl; i++) {
+      const r2 = sub(sd, 40 + i), s = nl > 1 ? (i / (nl - 1) - .5) * 2 : 0, ex = fx + s * G.rx * .82 * (.8 + r2() * .3), ey = G.cy + (r2() - .3) * G.ry * .5;
+      const pts = bez3([fx, fy + 6], [fx + s * G.rx * .12, fy - G.ry * .5], [fx + s * G.rx * .5, fy - G.ry * .35], [ex, ey + G.ry * .2], 12);
+      c.fillStyle = pal.base; ribbon(c, pts, lerp(4, 22, k), 2); tips.push({ x: ex, y: ey });
+    }
+    const hue = 108 + (v - 1) * 6;
+    crown(c, sub(sd, 77), fx, G.cy, G.rx, G.ry, {
+      n: Math.round(lerp(5, 64, k)), rMin: lerp(8, 20, k), rMax: lerp(16, 50, k), leafN: Math.round(lerp(10, 460, k)), leafLen: lerp(9, 20, k), anchors: tips,
+      col: (s, r) => hsl(hue + (r ? (r() - .5) * 14 : 0), 66, 16 + s * 36),
+      leaf: (c, len, col, lit) => leaf(c, len, len * .3, col, lit, null)
+    });
+    /* blossoms */
+    if (k > .45) {
+      const bc = [[330, 80, 60], [12, 90, 58], [344, 60, 86]][v % 3], nb = Math.round(lerp(4, 34, (k - .45) / .55)), rb = sub(sd, 88);
+      for (let i = 0; i < nb; i++) { const a = rb() * TAU, d = Math.pow(rb(), .6); c.save(); c.translate(fx + Math.cos(a) * G.rx * d * .95, G.cy + Math.sin(a) * G.ry * d * .8 - 2); blossom5(c, 7 + rb() * 6 + k * 4, hsl(bc[0] + (rb() - .5) * 14, bc[1], bc[2] + rb() * 10), hsl(48, 90, 62), rb); c.restore(); }
+    }
+  },
+  live(c, o) {
+    const G = kapokGeo(Math.round(o.g * 4) / 4, o.v), k = G.k;
+    if (k < .25) return;
+    const L = rfLianas(o.g, o.v, Math.round(lerp(2, 14, k)), G.rx, G.cy + G.ry * .55, G.H * .25, G.H * .62, G.sd);
+    c.lineCap = 'round';
+    for (const a of L) rfHang(c, a, o.t, o.wind, hsl(88, 38, 22), hsl(94, 46, 42, .8), true);
+  }
+});
+
+/* ---------- Strangler Fig ---------- */
+function figGeo(g, v) {
+  const k = g / 3, sd = hashStr('fig') + v * 977;
+  const H = lerp(50, 330, Math.pow(k, .8)), rx = lerp(54, 270, Math.pow(k, .9)), ry = lerp(30, 100, k);
+  return { k, sd, H, rx, ry, cy: -H - ry * .1 };
+}
+reg({
+  id: 'fig', name: 'Strangler Fig', cat: 'tree', biome: 'Rainforest', cost: 300, grow: [34, 110, 280], box: { w: 900, h: 640 }, hw: 210, flex: .008,
+  desc: 'Braided roots wrap a trunk that is no longer quite a trunk.',
+  draw(c, g, v) {
+    const G = figGeo(g, v), k = G.k, sd = G.sd, H = G.H, R = sub(sd, 5);
+    mound(c, 0, -2, 50 + k * 90, 10 + k * 8, sub(sd, 99));
+    const pal = { base: hsl(28, 16, 32), dark: hsl(22, 22, 12), light: hsl(36, 20, 56) };
+    const ns = Math.round(lerp(4, 10, k)), wd = lerp(6, 18, k), W0 = lerp(26, 120, k), W1 = lerp(12, 50, k), lean = (v - 1) * 14 * k;
+    const strands = [];
+    for (let i = 0; i < ns; i++) {
+      const r2 = sub(sd, 30 + i), f = ns > 1 ? i / (ns - 1) - .5 : 0, sw = (i % 2 ? 1 : -1) * lerp(8, 34, k) * (.6 + r2() * .8);
+      const x0 = f * W0 * 2, x1 = lean + f * W1 * 2;
+      strands.push({ pts: bez3([x0, 2], [x0 + sw, -H * .3], [x1 - sw * 1.2, -H * .65], [x1, -H * .96], 18), w: wd * (.7 + r2() * .6), tone: r2() });
+    }
+    /* back strands first, then front: alternate order so they appear woven */
+    const order = strands.map((s, i) => i).sort((a, b) => ((a * 7) % ns) - ((b * 7) % ns));
+    for (const i of order) {
+      const s = strands[i];
+      c.fillStyle = hsl(26 + s.tone * 8, 16, 24 + s.tone * 12); ribbon(c, s.pts, s.w * 1.5, s.w * .8);
+      c.strokeStyle = pal.light; c.globalAlpha = .35; c.lineWidth = Math.max(1, s.w * .3); strokePts(c, offsetPts(s.pts, s.w * 1.5, s.w * .8, -.45)); c.globalAlpha = 1;
+      c.strokeStyle = pal.dark; c.globalAlpha = .5; c.lineWidth = Math.max(1, s.w * .35); strokePts(c, offsetPts(s.pts, s.w * 1.5, s.w * .8, .5)); c.globalAlpha = 1;
+    }
+    mossPatch(c, -W0 * .5, -H * .05, W0, R, 14); mossPatch(c, W0 * .4, -H * .12, W0 * .7, R, 10); mossPatch(c, 0, -H * .35, W1 * 1.4, R, 8);
+    /* pillar roots dropping from the limbs */
+    const fx = lean, fy = -H, tips = [];
+    const nl = Math.round(lerp(3, 7, k));
+    for (let i = 0; i < nl; i++) {
+      const r2 = sub(sd, 50 + i), s = nl > 1 ? (i / (nl - 1) - .5) * 2 : 0, ex = fx + s * G.rx * .85 * (.82 + r2() * .22), ey = G.cy + G.ry * (.1 + r2() * .35);
+      const pts = bez3([fx, fy + 8], [fx + s * G.rx * .3, fy - G.ry * .6], [fx + s * G.rx * .6, fy - G.ry * .3], [ex, ey], 12);
+      c.fillStyle = pal.base; ribbon(c, pts, lerp(4, 20, k), 2); tips.push({ x: ex, y: ey });
+      if (k > .55 && Math.abs(s) > .3 && Math.abs(s) < .95) {
+        const gp = bez3([ex, ey + 4], [ex + s * 16, ey + (-ey) * .3], [ex - s * 12, ey + (-ey) * .72], [ex + s * 10, 2], 14);
+        c.fillStyle = pal.base; ribbon(c, gp, 4, lerp(12, 28, k)); c.strokeStyle = pal.light; c.globalAlpha = .3; c.lineWidth = 1.4; strokePts(c, offsetPts(gp, 4, lerp(12, 28, k), -.4)); c.globalAlpha = 1;
+      }
+    }
+    const hue = 100 + (v - 1) * 5;
+    crown(c, sub(sd, 77), fx, G.cy, G.rx, G.ry, {
+      n: Math.round(lerp(6, 58, k)), rMin: lerp(9, 18, k), rMax: lerp(18, 44, k), leafN: Math.round(lerp(14, 400, k)), leafLen: lerp(10, 20, k), anchors: tips,
+      col: (s, r) => hsl(hue + (r ? (r() - .5) * 12 : 0), 54, 14 + s * 32),
+      leaf: (c, len, col, lit) => { c.fillStyle = col; c.beginPath(); c.ellipse(0, -len * .5, len * .32, len * .5, 0, 0, TAU); c.fill(); c.fillStyle = lit; c.beginPath(); c.ellipse(len * .08, -len * .55, len * .15, len * .36, .1, 0, TAU); c.fill(); }
+    });
+    if (k > .5) { const rf = sub(sd, 99), nf = Math.round(lerp(4, 26, (k - .5) / .5)); for (let i = 0; i < nf; i++) { const a = rf() * TAU, d = Math.pow(rf(), .7); c.fillStyle = hsl(8 + rf() * 18, 74, 46 + rf() * 10); c.beginPath(); c.arc(fx + Math.cos(a) * G.rx * d * .95, G.cy + Math.sin(a) * G.ry * d * .85, 2.4 + rf() * 1.6, 0, TAU); c.fill(); } }
+  },
+  live(c, o) {
+    const G = figGeo(Math.round(o.g * 4) / 4, o.v), k = G.k;
+    if (k < .3) return;
+    const L = rfLianas(o.g, o.v, Math.round(lerp(3, 20, k)), G.rx, G.cy + G.ry * .6, G.H * .15, G.H * .5, G.sd);
+    c.lineCap = 'round';
+    for (const a of L) rfHang(c, a, o.t * 1.1, o.wind * .8, hsl(26, 26, 26), hsl(32, 26, 48, .6), false);
+  }
+});
+
+/* ---------- Hanging Cascade ---------- */
+reg({
+  id: 'cascade', name: 'Hanging Cascade', cat: 'decor', biome: 'Rainforest', cost: 115, grow: null, box: { w: 480, h: 420 }, hw: 130, flex: 0,
+  desc: 'A mossy cliff, a ribbon of white water, and a pool that never stops rippling.',
+  draw(c, g, v) {
+    const R = sub(hashStr('cascade') + v * 977, 1);
+    softShadow(c, 170, 18, .45);
+    /* tapering rocky shoulders: side = -1 / 1, inner edge at the water channel */
+    const prof = (side, wBase, top, tone, seed) => {
+      const Rr = rngf(seed), n = 14, pts = [];
+      for (let i = 0; i <= n; i++) { const t = i / n, y = t * top, w = wBase * Math.pow(1 - Math.pow(t, 2.1), .8) + Math.sin(t * 11 + seed) * 5 * (1 - t) + (Rr() - .5) * 8 * t; pts.push([side * (24 + Math.max(0, w)), -y]); }
+      c.beginPath(); c.moveTo(side * 24, 0); pts.forEach(q => c.lineTo(q[0], q[1])); c.lineTo(side * 24, -top); c.closePath();
+      const gr = c.createLinearGradient(side * (24 + wBase), -top, side * 24, 0);
+      gr.addColorStop(0, hsl(36, 12, 40 + tone)); gr.addColorStop(.5, hsl(28, 12, 28 + tone)); gr.addColorStop(1, hsl(20, 16, 14 + tone));
+      c.fillStyle = gr; c.fill();
+      return pts;
+    };
+    const edges = [];
+    edges.push(prof(-1, 190, 296, -3, 11), prof(1, 186, 282, -5, 23));
+    edges.push(prof(-1, 128, 332, 5, 37), prof(1, 124, 322, 3, 51));
+    for (const pts of edges) for (let i = 1; i < pts.length - 1; i++) for (let j = 0; j < 2; j++) {
+      const q = pts[i], x = q[0] + (R() - .5) * 18, y = q[1] + (R() - .5) * 20, r = 9 + R() * 13;
+      const gr = c.createRadialGradient(x - r * .3, y - r * .3, 1, x, y, r * 1.1); gr.addColorStop(0, hsl(108, 62, 42)); gr.addColorStop(.7, hsl(120, 56, 24)); gr.addColorStop(1, hsl(130, 52, 13));
+      c.fillStyle = gr; c.beginPath(); c.ellipse(x, y, r * 1.2, r * .85, 0, 0, TAU); c.fill();
+    }
+    for (const side of [-1, 1]) for (let i = 0; i < 9; i++) {
+      const x = side * (30 + i * 9 + R() * 6), r = 12 + R() * 14, y = -(318 - i * 4) + R() * 10;
+      const gr = c.createRadialGradient(x - r * .3, y - r * .35, 1, x, y, r * 1.1); gr.addColorStop(0, hsl(112, 62, 44)); gr.addColorStop(.65, hsl(120, 58, 26)); gr.addColorStop(1, hsl(130, 56, 14));
+      c.fillStyle = gr; c.beginPath(); c.ellipse(x, y, r * 1.15, r * .8, 0, 0, TAU); c.fill();
+    }
+    /* strata and cracks */
+    c.strokeStyle = 'rgba(8,16,18,.35)'; c.lineWidth = 1.2;
+    for (let i = 0; i < 26; i++) { const s = R() > .5 ? 1 : -1, y = -10 - R() * 270, x = s * (30 + R() * 120 * (1 + y / 330)); c.beginPath(); c.moveTo(x, y); c.lineTo(x + (R() - .5) * 40, y + (R() - .5) * 8); c.stroke(); }
+    c.strokeStyle = 'rgba(210,240,240,.18)'; for (let i = 0; i < 18; i++) { const s = R() > .5 ? 1 : -1, y = -10 - R() * 270, x = s * (30 + R() * 120 * (1 + y / 330)); c.beginPath(); c.moveTo(x, y); c.lineTo(x + (R() - .5) * 30, y + 1); c.stroke(); }
+    /* dark channel behind the water */
+    const ch = c.createLinearGradient(-24, 0, 24, 0); ch.addColorStop(0, 'rgba(8,24,26,.9)'); ch.addColorStop(.5, 'rgba(18,44,46,.75)'); ch.addColorStop(1, 'rgba(8,24,26,.9)');
+    c.fillStyle = ch; c.fillRect(-24, -312, 48, 312);
+    /* moss and growth */
+    for (const s of [-1, 1]) for (let i = 0; i < 6; i++) { const y = -20 - R() * 260; mossPatch(c, s * (36 + R() * 90 * (1 + y / 330)), y, 50, R, 8); }
+    for (const x of [-140, -100, 96, 130]) fernFrond(c, x < 0 ? -.6 : .6, 54, R, 112);
+    for (let i = 0; i < 7; i++) { const x = (R() > .5 ? 1 : -1) * (28 + R() * 100), y = -280 - R() * 40; fernFrond(c, (R() - .5) * 1.6, 36 + R() * 26, R, 100 + R() * 20); }
+    /* pool */
+    const pg = c.createRadialGradient(0, 4, 4, 0, 4, 190); pg.addColorStop(0, hsl(178, 52, 52, .96)); pg.addColorStop(.6, hsl(188, 56, 30, .95)); pg.addColorStop(1, hsl(200, 50, 14, .0));
+    c.save(); c.scale(1, .2); c.fillStyle = pg; c.beginPath(); c.arc(0, 20, 190, 0, TAU); c.fill(); c.restore();
+    for (const x of [-196, -160, 170, 198]) rockPoly(c, x, 4, 26 + R() * 14, 22 + R() * 12, R, 2);
+    for (let i = 0; i < 9; i++) pebble(c, (R() > .5 ? 1 : -1) * (100 + R() * 80), 2 + R() * 6, 4 + R() * 6, R);
+    for (let i = 0; i < 4; i++) fernFrond(c, (R() - .5) * 1.8, 24 + R() * 14, R, 100);
+    /* hanging vines */
+    c.lineWidth = 1.4; for (let i = 0; i < 9; i++) { const x = -150 + R() * 300; if (Math.abs(x) < 34) continue; const y0 = -250 - R() * 60, L = 30 + R() * 90; c.strokeStyle = hsl(100, 42, 26 + R() * 8); c.beginPath(); c.moveTo(x, y0); c.quadraticCurveTo(x + (R() - .5) * 8, y0 + L * .5, x + (R() - .5) * 6, y0 + L); c.stroke(); }
+  },
+  live(c, o) {
+    const t = o.t, fl = .9 + Math.min(.5, o.rain * .5);
+    /* falling column */
+    const wg = c.createLinearGradient(0, -312, 0, 0); wg.addColorStop(0, 'rgba(210,240,244,.88)'); wg.addColorStop(.5, 'rgba(180,230,236,.76)'); wg.addColorStop(1, 'rgba(236,252,252,.9)');
+    c.fillStyle = wg; c.beginPath(); c.moveTo(-18 * fl, -312); c.bezierCurveTo(-20 * fl, -200, -22 * fl, -80, -26 * fl, -6); c.lineTo(26 * fl, -6); c.bezierCurveTo(22 * fl, -80, 20 * fl, -200, 18 * fl, -312); c.closePath(); c.fill();
+    c.lineCap = 'butt';
+    for (let i = 0; i < 6; i++) {
+      const x = -14 * fl + i * 5.6 * fl, w = (i % 3 + 1) * .9; c.strokeStyle = i % 2 ? 'rgba(255,255,255,.75)' : 'rgba(150,210,220,.55)'; c.lineWidth = w; c.setLineDash([16 + i * 3, 12 + (i * 5) % 9]); c.lineDashOffset = -t * (110 + i * 12);
+      c.beginPath(); c.moveTo(x, -310); c.lineTo(x * 1.25, -8); c.stroke();
+    }
+    c.setLineDash([]); c.lineCap = 'round';
+    /* lip foam */
+    c.fillStyle = 'rgba(255,255,255,.85)'; c.beginPath(); c.ellipse(0, -312, 22 * fl, 4, 0, 0, TAU); c.fill();
+    /* impact ripples */
+    for (let i = 0; i < 3; i++) { const u = ((t * .45 + i / 3) % 1), r = 24 + u * 110; c.strokeStyle = `rgba(230,252,252,${(.55 * (1 - u)).toFixed(3)})`; c.lineWidth = 1.6; c.beginPath(); c.ellipse(0, 5, r, r * .2, 0, 0, TAU); c.stroke(); }
+    /* spray + mist */
+    const mg = c.createRadialGradient(0, -14, 4, 0, -14, 110); const ma = .22 + .1 * Math.sin(t * 1.3) + o.rain * .15;
+    mg.addColorStop(0, `rgba(235,252,252,${ma.toFixed(3)})`); mg.addColorStop(1, 'rgba(235,252,252,0)');
+    c.fillStyle = mg; c.beginPath(); c.ellipse(0, -14, 110, 54, 0, 0, TAU); c.fill();
+    for (let i = 0; i < 7; i++) { const u = (t * .7 + i * .143) % 1, x = Math.sin(i * 9.1) * 40 * (.4 + u), y = -6 - u * 36; c.fillStyle = `rgba(255,255,255,${(.7 * (1 - u)).toFixed(3)})`; c.beginPath(); c.arc(x, y, 1.3, 0, TAU); c.fill(); }
+  }
+});
+
+/* ---------- Moss Totem ---------- */
+reg({
+  id: 'totem', name: 'Moss Totem', cat: 'decor', biome: 'Rainforest', cost: 42, grow: null, box: { w: 220, h: 330 }, hw: 50, flex: 0,
+  desc: 'Three carved guardians, softly lit by something older than the forest.',
+  glow: { x: 0, y: -226, r: 120, col: [120, 255, 170], a: .5, minG: 0, flicker: false },
+  draw(c, g, v) {
+    const R = sub(hashStr('totem') + v * 977, 1);
+    softShadow(c, 70, 9, .45);
+    const block = (x, y, w, h, tone) => {
+      const gr = c.createLinearGradient(x - w / 2, 0, x + w / 2, 0); gr.addColorStop(0, hsl(170, 8, 50 + tone)); gr.addColorStop(.55, hsl(184, 10, 34 + tone)); gr.addColorStop(1, hsl(200, 14, 18 + tone));
+      c.fillStyle = gr; c.beginPath(); c.roundRect(x - w / 2, y - h, w, h, 5); c.fill();
+      c.strokeStyle = 'rgba(8,16,18,.5)'; c.lineWidth = 1.4; c.stroke();
+      c.fillStyle = 'rgba(210,240,240,.16)'; c.fillRect(x - w / 2 + 2, y - h + 2, w * .25, h - 4);
+    };
+    const eye = (x, y, r) => { c.fillStyle = 'rgba(6,14,14,.85)'; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill(); c.fillStyle = hsl(150, 90, 68); c.beginPath(); c.arc(x, y, r * .55, 0, TAU); c.fill(); c.fillStyle = 'rgba(255,255,255,.7)'; c.beginPath(); c.arc(x - r * .2, y - r * .2, r * .2, 0, TAU); c.fill(); };
+    /* base */
+    c.fillStyle = hsl(188, 10, 22); c.beginPath(); c.moveTo(-46, 0); c.lineTo(-38, -22); c.lineTo(38, -22); c.lineTo(46, 0); c.closePath(); c.fill();
+    block(0, -20, 64, 72, 0); block(0, -92, 56, 62, 4); block(0, -154, 48, 56, 8);
+    /* head crest */
+    c.fillStyle = hsl(186, 10, 38); c.beginPath(); c.moveTo(-30, -208); c.lineTo(-22, -240); c.lineTo(-8, -216); c.lineTo(0, -250); c.lineTo(8, -216); c.lineTo(22, -240); c.lineTo(30, -208); c.closePath(); c.fill(); c.strokeStyle = 'rgba(8,16,18,.5)'; c.stroke();
+    /* faces */
+    eye(-14, -176, 6.5); eye(14, -176, 6.5); c.fillStyle = 'rgba(6,14,14,.8)'; c.beginPath(); c.moveTo(-10, -158); c.lineTo(10, -158); c.lineTo(0, -168); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(6,14,14,.75)'; c.lineWidth = 3; c.lineCap = 'round'; c.beginPath(); c.moveTo(-22, -190); c.lineTo(-6, -184); c.moveTo(22, -190); c.lineTo(6, -184); c.stroke();
+    eye(-12, -116, 5); eye(12, -116, 5); c.beginPath(); c.arc(0, -96, 8, .1, Math.PI - .1); c.stroke();
+    c.lineWidth = 2.4; c.beginPath(); for (let i = 0; i < 40; i++) { const a = i * .5, r = 1 + i * .32; const x = Math.cos(a) * r, y = -54 + Math.sin(a) * r; i ? c.lineTo(x, y) : c.moveTo(x, y); } c.stroke();
+    c.beginPath(); c.moveTo(-24, -34); c.lineTo(-12, -40); c.lineTo(-24, -46); c.moveTo(24, -34); c.lineTo(12, -40); c.lineTo(24, -46); c.stroke();
+    /* moss, vines */
+    mossPatch(c, 0, -20, 70, R, 16); mossPatch(c, -20, -92, 40, R, 10); mossPatch(c, 14, -154, 30, R, 8); mossPatch(c, 0, -240, 30, R, 8);
+    for (let i = 0; i < 4; i++) { const x = (R() - .5) * 60, y = -150 - R() * 60; c.strokeStyle = hsl(100, 44, 28); c.lineWidth = 1.4; c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(x + 6, y + 30, x - 4 + R() * 8, y + 50 + R() * 40); c.stroke(); }
+    for (let i = 0; i < 6; i++) pebble(c, (R() - .5) * 90, -1 + R() * 3, 3 + R() * 3.5, R);
+    fernFrond(c, -.7, 34, R, 108); fernFrond(c, .8, 30, R, 112);
+  }
+});
 
 /* ============================================================
    Scene — weather, sky, ground, particles, lighting, render loop
@@ -1789,9 +2338,11 @@ const WEATHERS = {
   storm: { name: 'Thunderstorm', desc: 'Heavy rain and distant thunder.', skyTop: '#0c1621', skyMid: '#213443', skyBot: '#46606a', fogCol: '#8aa3a8', fog: .5, tint: '#050d16', tintA: .36, rain: 1, wind: .95, leaves: .4, pollen: 0, fireflies: 0, stars: 0, moon: 0, aurora: 0, shafts: 0, light: 1, cloud: 1, cloudCol: '#33454f', lightning: 1 },
   petals: { name: 'Petal Fall', desc: 'Pink dawn and drifting blossoms.', skyTop: '#76689a', skyMid: '#df9fb4', skyBot: '#ffdcc2', fogCol: '#f3d3d3', fog: .45, tint: '#3a2038', tintA: .06, rain: .1, wind: .4, leaves: 0, petals: .9, pollen: .5, fireflies: 0, stars: 0, moon: 0, aurora: 0, shafts: .55, light: .25, cloud: .55, cloudCol: '#f1bcc8', lightning: 0 },
   firefly: { name: 'Firefly Night', desc: 'Moonlight and a hundred small lamps.', skyTop: '#060c1c', skyMid: '#0f1f37', skyBot: '#25435c', fogCol: '#5d7f93', fog: .3, tint: '#040918', tintA: .3, rain: 0, wind: .16, leaves: 0, pollen: .15, fireflies: 1, stars: 1, moon: 1, aurora: 0, shafts: 0, light: 1.15, cloud: .25, cloudCol: '#2c4660', lightning: 0 },
+  monsoon: { name: 'Warm Downpour', desc: 'Fat warm drops on broad green leaves.', skyTop: '#1d4a4e', skyMid: '#3b8a76', skyBot: '#9fd4a2', fogCol: '#bfe6c6', fog: .5, tint: '#0a2a1e', tintA: .1, rain: .92, wind: .45, leaves: .22, pollen: 0, fireflies: .1, stars: 0, moon: 0, aurora: 0, shafts: .25, light: .8, cloud: .9, cloudCol: '#5f9a88', lightning: 0 },
+  sunbreak: { name: 'Sunbreak', desc: 'Gold light through the canopy after rain.', skyTop: '#2e7a8a', skyMid: '#7ec6a0', skyBot: '#ffe9a6', fogCol: '#f2f0c0', fog: .6, tint: '#ffe9a0', tintA: .03, rain: .12, wind: .25, leaves: .3, pollen: .9, fireflies: .1, stars: 0, moon: 0, aurora: 0, shafts: 1, light: .15, cloud: .45, cloudCol: '#f4f2d0', lightning: 0, spores: .25 },
   aurora: { name: 'Aurora Night', desc: 'Green ribbons over a hushed grove.', skyTop: '#040a1a', skyMid: '#0b2231', skyBot: '#1d4a50', fogCol: '#4f8a8a', fog: .28, tint: '#030b16', tintA: .3, rain: 0, wind: .2, leaves: 0, pollen: .1, fireflies: .35, stars: 1, moon: .45, aurora: 1, shafts: 0, light: 1.15, cloud: .1, cloudCol: '#24474f', lightning: 0, spores: .8 }
 };
-const WEATHER_ORDER = ['rain', 'breeze', 'mist', 'storm', 'petals', 'firefly', 'aurora'];
+const WEATHER_ORDER = ['rain', 'breeze', 'mist', 'storm', 'petals', 'firefly', 'aurora', 'monsoon', 'sunbreak'];
 const NUM_KEYS = ['fog', 'tintA', 'rain', 'wind', 'leaves', 'petals', 'pollen', 'fireflies', 'stars', 'moon', 'aurora', 'shafts', 'light', 'cloud', 'lightning', 'spores'];
 const COL_KEYS = ['skyTop', 'skyMid', 'skyBot', 'fogCol', 'tint', 'cloudCol'];
 const W = {}; let Wt = {};
@@ -1823,23 +2374,39 @@ function resize() {
   gr.addColorStop(0, 'rgba(3,8,10,0)'); gr.addColorStop(1, 'rgba(3,8,10,.62)'); vc.fillStyle = gr; vc.fillRect(0, 0, 256, 256);
   layout();
 }
-/* on phones the world is scaled so the home garden fits, and lifted above the timer dock */
+/* on phones the world is scaled so the home garden fits, and lifted above the timer dock.
+   SC0 is the default framing; the player can zoom between SC_MIN (whole world) and SC_MAX. */
+let SC0 = 1, SC_MIN = .3, SC_MAX = 2;
 function layout() {
-  const narrow = VW <= 720, prev = SC;
+  const narrow = VW <= 720;
   if (narrow) {
     const dh = (typeof el !== 'undefined' && el.dock) ? el.dock.offsetHeight : 280;
-    INSET = Math.min(dh + 12, VH * .5); SC = clamp(VW / 660, .5, .95);
-  } else { INSET = 0; SC = Math.max(VH / WORLD_H, VW * 1.3 / WORLD_W); }
-  if (prev && prev !== SC) panX = panX;
+    INSET = Math.min(dh + 12, VH * .5); SC0 = clamp(VW / 660, .5, .95);
+  } else { INSET = 0; SC0 = Math.max(VH / WORLD_H, VW * 1.3 / WORLD_W); }
+  SC_MIN = Math.min(SC0 * .92, Math.max(.16, VW / WORLD_SPAN)); SC_MAX = SC0 * 1.7;
+  SC = clamp(SC0 * (S.set.zoom || 1), SC_MIN, SC_MAX);
   camera();
 }
 function camera() {
-  const span = WORLD_W * SC;
-  offX = clamp(VW / 2 - panX * SC, Math.min(0, VW - span), 0);
-  if (span <= VW) offX = (VW - span) / 2;
+  const span = WORLD_SPAN * SC;
+  offX = clamp(VW / 2 - panX * SC, Math.min(-WX0 * SC, VW - WX1 * SC), -WX0 * SC);
+  if (span <= VW) offX = (VW - span) / 2 - WX0 * SC;
   panX = (VW / 2 - offX) / SC;
-  offY = VH - INSET - WORLD_H * SC;
+  /* zoomed out, slide the horizon down the screen so the view isn't mostly empty sky */
+  const bottom = VH - INSET - WORLD_H * SC, tz = SC0 > SC_MIN ? clamp((SC0 - SC) / (SC0 - SC_MIN), 0, 1) : 0;
+  offY = lerp(bottom, (VH - INSET) * .72 - HORIZON * SC, ease(tz));
 }
+/* zoom by a factor, keeping the world point under screen x (default: centre) still */
+function zoomBy(f, sx) { zoomTo(SC * f, sx); }
+function zoomTo(target, sx) {
+  if (sx == null) sx = VW / 2;
+  const wx = (sx - offX) / SC; SC = clamp(target, SC_MIN, SC_MAX);
+  S.set.zoom = Math.round(SC / SC0 * 1000) / 1000; saveSoon();
+  offX = sx - wx * SC; panX = (VW / 2 - offX) / SC; camera();
+  if (typeof closeInspector === 'function') closeInspector();
+}
+const zoomFit = () => zoomTo(SC_MIN);
+const zoomHome = () => { panX = WORLD_W / 2; zoomTo(SC0); };
 const toWorld = (sx, sy) => [(sx - offX) / SC, (sy - offY) / SC];
 const toScreen = (wx, wy) => [wx * SC + offX, wy * SC + offY];
 function panBy(dxPx) { panX -= dxPx / SC; camera(); }
@@ -1848,52 +2415,85 @@ function panBy(dxPx) { panX -= dxPx / SC; camera(); }
 let groundCv = null;
 const GROUND_TOP = HORIZON - 24;
 function buildGround() {
-  const GS = 1.5, w = Math.ceil(WORLD_W * GS), h = Math.ceil((WORLD_H - GROUND_TOP) * GS);
+  const GS = 1.5, w = Math.ceil(WORLD_SPAN * GS), h = Math.ceil((WORLD_H - GROUND_TOP) * GS), K = WORLD_SPAN / WORLD_W;
   groundCv = document.createElement('canvas'); groundCv.width = w; groundCv.height = h;
-  const c = groundCv.getContext('2d'); c.scale(GS, GS); c.translate(0, -GROUND_TOP);
-  const R = rngf(4242);
+  const c = groundCv.getContext('2d'); c.scale(GS, GS); c.translate(-WX0, -GROUND_TOP);
+  const R = rngf(4242), rx = () => WX0 + R() * WORLD_SPAN;
   const g = c.createLinearGradient(0, GROUND_TOP, 0, WORLD_H);
   g.addColorStop(0, '#41614f'); g.addColorStop(.18, '#34553f'); g.addColorStop(.55, '#294a32'); g.addColorStop(1, '#1b3523');
-  c.fillStyle = g; c.fillRect(0, GROUND_TOP, WORLD_W, WORLD_H - GROUND_TOP);
-  for (let i = 0; i < 90; i++) {
-    const x = R() * WORLD_W, y = HORIZON + R() * (WORLD_H - HORIZON), r = 50 + R() * 170, light = R() > .5;
+  c.fillStyle = g; c.fillRect(WX0, GROUND_TOP, WORLD_SPAN, WORLD_H - GROUND_TOP);
+  /* the rainforest floor: a richer, warmer green laid over the base, fading in with lush(x) */
+  {
+    const t = document.createElement('canvas'); t.width = w; t.height = h; const tc = t.getContext('2d'); tc.scale(GS, GS); tc.translate(-WX0, -GROUND_TOP);
+    const vg = tc.createLinearGradient(0, GROUND_TOP, 0, WORLD_H);
+    vg.addColorStop(0, '#4f8a4c'); vg.addColorStop(.18, '#3f7d3e'); vg.addColorStop(.55, '#2f6a33'); vg.addColorStop(1, '#1f4a27');
+    tc.fillStyle = vg; tc.fillRect(WX0, GROUND_TOP, WORLD_SPAN, WORLD_H - GROUND_TOP);
+    tc.globalCompositeOperation = 'destination-in';
+    const mg = tc.createLinearGradient(WX0, 0, WORLD_W, 0);
+    for (let i = 0; i <= 24; i++) { const x = WX0 + (WORLD_W - WX0) * i / 24; mg.addColorStop(i / 24, `rgba(0,0,0,${lush(x).toFixed(3)})`); }
+    tc.fillStyle = mg; tc.fillRect(WX0, GROUND_TOP, WORLD_SPAN, WORLD_H - GROUND_TOP);
+    c.save(); c.setTransform(1, 0, 0, 1, 0, 0); c.drawImage(t, 0, 0); c.restore();
+  }
+  for (let i = 0; i < 90 * K; i++) {
+    const x = rx(), y = HORIZON + R() * (WORLD_H - HORIZON), r = 50 + R() * 170, light = R() > .5, L = lush(x);
     const rg = c.createRadialGradient(x, y, 0, x, y, r);
-    rg.addColorStop(0, light ? 'rgba(130,175,100,.16)' : 'rgba(6,20,14,.2)'); rg.addColorStop(1, 'rgba(0,0,0,0)');
+    rg.addColorStop(0, light ? (L > .4 ? `rgba(${(150 - L * 40) | 0},${(190 + L * 30) | 0},80,.2)` : 'rgba(130,175,100,.16)') : 'rgba(6,20,14,.2)'); rg.addColorStop(1, 'rgba(0,0,0,0)');
     c.fillStyle = rg; c.save(); c.translate(x, y); c.scale(1, .32); c.translate(-x, -y); c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill(); c.restore();
   }
   for (const s of SLOTS) {
-    const rx = 78 * s.sc, ry = 24 * s.sc, g2 = c.createRadialGradient(s.x, s.y - 4, 4, s.x, s.y - 4, rx);
+    const rx2 = 78 * s.sc, ry = 24 * s.sc, g2 = c.createRadialGradient(s.x, s.y - 4, 4, s.x, s.y - 4, rx2);
     g2.addColorStop(0, 'rgba(34,26,18,.6)'); g2.addColorStop(.7, 'rgba(34,26,18,.28)'); g2.addColorStop(1, 'rgba(34,26,18,0)');
-    c.save(); c.translate(s.x, s.y - 4); c.scale(1, ry / rx); c.translate(-s.x, -(s.y - 4)); c.fillStyle = g2; c.beginPath(); c.arc(s.x, s.y - 4, rx, 0, TAU); c.fill(); c.restore();
+    c.save(); c.translate(s.x, s.y - 4); c.scale(1, ry / rx2); c.translate(-s.x, -(s.y - 4)); c.fillStyle = g2; c.beginPath(); c.arc(s.x, s.y - 4, rx2, 0, TAU); c.fill(); c.restore();
   }
-  for (let i = 0; i < 12000; i++) {
+  for (let i = 0; i < 12000 * K; i++) {
     const y = HORIZON - 10 + Math.pow(R(), .85) * (WORLD_H - HORIZON + 10), p = clamp((y - HORIZON) / (WORLD_H - HORIZON), 0, 1);
-    const x = R() * WORLD_W, L = 3 + p * 13 * (.5 + R() * .7), a = (R() - .5) * .7;
-    c.strokeStyle = hsl(100 + R() * 40, 28 + R() * 20, 12 + p * 14 + R() * 16, .55 + R() * .4);
+    const x = rx(), L = lush(x), len = 3 + p * 13 * (.5 + R() * .7), a = (R() - .5) * .7;
+    c.strokeStyle = hsl(100 + R() * 40 + L * 6, 28 + R() * 20 + L * 26, 12 + p * 14 + R() * 16 + L * 8, .55 + R() * .4);
     c.lineWidth = .8 + p * 1.2; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(x + a * L * .5, y - L * .6, x + a * L, y - L); c.stroke();
+    c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(x + a * len * .5, y - len * .6, x + a * len, y - len); c.stroke();
   }
-  for (let i = 0; i < 300; i++) {
-    const y = HORIZON + 10 + R() * (WORLD_H - HORIZON - 10), p = (y - HORIZON) / (WORLD_H - HORIZON), x = R() * WORLD_W, r = .8 + p * 2.2 * R();
-    const cols = ['rgba(240,240,225,.9)', 'rgba(205,190,240,.85)', 'rgba(250,224,120,.85)', 'rgba(244,170,190,.8)'];
-    c.fillStyle = cols[(R() * cols.length) | 0]; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill();
+  /* rainforest undergrowth: broad leaves, little ferns and moss cushions, denser the deeper you go */
+  for (let i = 0; i < 4300 * K; i++) {
+    const x = rx(), L = lush(x); if (R() > L * L * 1.1) continue;
+    const y = HORIZON + 6 + Math.pow(R(), .8) * (WORLD_H - HORIZON - 6), p = clamp((y - HORIZON) / (WORLD_H - HORIZON), 0, 1);
+    const sz = 5 + p * 17 * (.5 + R() * .8), kind = R();
+    c.save(); c.translate(x, y);
+    if (kind < .55) {
+      const nl = 3 + (R() * 3 | 0), hue = 112 + R() * 34, lig = 17 + p * 13 + R() * 13;
+      for (let j = 0; j < nl; j++) { c.save(); c.rotate((j / (nl - 1) - .5) * 2.2 + (R() - .5) * .3); leaf(c, sz * (.8 + R() * .5), sz * .3, hsl(hue, 50, lig), hsl(hue - 6, 58, lig + 12), null); c.restore(); }
+    } else if (kind < .85) {
+      const hue = 118 + R() * 30, lig = 24 + p * 12 + R() * 14;
+      c.fillStyle = hsl(hue, 52, lig, .92); c.beginPath(); c.ellipse(0, 0, sz * .9, sz * .38, 0, 0, TAU); c.fill();
+      c.fillStyle = hsl(hue - 8, 60, lig + 12, .8); c.beginPath(); c.ellipse(-sz * .2, -sz * .08, sz * .5, sz * .2, 0, 0, TAU); c.fill();
+    } else {
+      const lig = 26 + p * 12; c.strokeStyle = hsl(126, 56, lig + 10, .9); c.lineWidth = 1.1; c.lineCap = 'round';
+      for (let j = 0; j < 7; j++) { const a = (j / 6 - .5) * 2, Lf = sz * (.9 + R() * .5); c.beginPath(); c.moveTo(0, 0); c.quadraticCurveTo(Math.sin(a) * Lf * .5, -Lf * .7, Math.sin(a) * Lf, -Lf * .9); c.stroke(); }
+    }
+    c.restore();
   }
-  for (let i = 0; i < 110; i++) { const y = HORIZON + 30 + R() * (WORLD_H - HORIZON - 30), p = (y - HORIZON) / (WORLD_H - HORIZON); pebble(c, R() * WORLD_W, y, 2 + p * 5 * R(), R); }
+  for (let i = 0; i < 300 * K; i++) {
+    const x = rx(), L = lush(x), y = HORIZON + 10 + R() * (WORLD_H - HORIZON - 10), p = (y - HORIZON) / (WORLD_H - HORIZON), r = .8 + p * 2.2 * R();
+    const cols = L > .35 && R() < L ? ['rgba(255,96,70,.95)', 'rgba(255,170,60,.95)', 'rgba(240,80,170,.9)', 'rgba(255,230,90,.95)'] : ['rgba(240,240,225,.9)', 'rgba(205,190,240,.85)', 'rgba(250,224,120,.85)', 'rgba(244,170,190,.8)'];
+    c.fillStyle = cols[(R() * cols.length) | 0]; c.beginPath(); c.arc(x, y, r * (1 + L * .4), 0, TAU); c.fill();
+  }
+  for (let i = 0; i < 110 * K; i++) { const x = rx(), y = HORIZON + 30 + R() * (WORLD_H - HORIZON - 30), p = (y - HORIZON) / (WORLD_H - HORIZON); if (R() < lush(x) * .8) continue; pebble(c, x, y, 2 + p * 5 * R(), R); }
   const fl = c.createLinearGradient(0, GROUND_TOP, 0, GROUND_TOP + 60); fl.addColorStop(0, 'rgba(120,160,150,.5)'); fl.addColorStop(1, 'rgba(120,160,150,0)');
-  c.fillStyle = fl; c.fillRect(0, GROUND_TOP, WORLD_W, 60);
+  c.fillStyle = fl; c.fillRect(WX0, GROUND_TOP, WORLD_SPAN, 60);
 }
 const hn = u => (Math.sin(u) * .5 + Math.sin(u * 2.31 + 1.3) * .3 + Math.sin(u * 4.7 + .4) * .2 + 1) / 2;
-const PINES = [], BLOBS = [];
+const PINES = [], BLOBS = [], JTREES = [];
 (function () {
   const R = rngf(77);
-  for (let u = -400; u < 2500; u += 16 + R() * 20) PINES.push({ u, h: 46 + R() * 54, w: 11 + R() * 9 });
-  for (let u = -400; u < 2500; u += 30 + R() * 34) BLOBS.push({ u, r: 20 + R() * 20, dy: R() * 12 });
+  for (let u = -1500; u < 2600; u += 16 + R() * 20) PINES.push({ u, h: 46 + R() * 54, w: 11 + R() * 9, th: R() });
+  for (let u = -1500; u < 2600; u += 30 + R() * 34) BLOBS.push({ u, r: 20 + R() * 20, dy: R() * 12, th: R() });
+  const R2 = rngf(1717);
+  for (let u = -1700; u < 2000; u += 40 + R2() * 52) JTREES.push({ u, h: 70 + R2() * 90, r: 30 + R2() * 34, th: R2(), n: 3 + (R2() * 3 | 0), ph: R2() * TAU });
 })();
 const STARS = []; (function () { const R = rngf(31); for (let i = 0; i < 190; i++) STARS.push({ x: R(), y: Math.pow(R(), 1.3), r: .4 + R() * 1.3, ph: R() * TAU }); })();
 const CLOUDS = []; (function () { const R = rngf(55); for (let i = 0; i < 8; i++) CLOUDS.push({ x: R() * 1.6, y: .06 + R() * .5, w: .42 + R() * .42, h: .12 + R() * .1, sp: .004 + R() * .008, a: .5 + R() * .5 }); })();
-const GRASS = []; (function () { const R = rngf(909); for (let i = 0; i < 230; i++) GRASS.push({ x: R() * WORLD_W, y: 872 + R() * 36, h: 16 + R() * 26, ph: R() * TAU, hue: 98 + R() * 36, l: 18 + R() * 20 }); })();
-const FFLY = []; (function () { const R = rngf(808); for (let i = 0; i < 34; i++) FFLY.push({ bx: R() * WORLD_W, by: 540 + R() * 330, ph: R() * TAU, sp: .6 + R() * .9, a: 30 + R() * 50 }); })();
-const POLLEN = []; (function () { const R = rngf(606); for (let i = 0; i < 54; i++) POLLEN.push({ bx: R() * WORLD_W, by: 360 + R() * 520, ph: R() * TAU, sp: .5 + R(), s: 3 + R() * 5 }); })();
+const GRASS = []; (function () { const R = rngf(909); for (let i = 0; i < 360; i++) GRASS.push({ x: WX0 + R() * WORLD_SPAN, y: 872 + R() * 36, h: 16 + R() * 26, ph: R() * TAU, hue: 98 + R() * 36, l: 18 + R() * 20 }); })();
+const FFLY = []; (function () { const R = rngf(808); for (let i = 0; i < 52; i++) FFLY.push({ bx: WX0 + R() * WORLD_SPAN, by: 540 + R() * 330, ph: R() * TAU, sp: .6 + R() * .9, a: 30 + R() * 50 }); })();
+const POLLEN = []; (function () { const R = rngf(606); for (let i = 0; i < 80; i++) POLLEN.push({ bx: WX0 + R() * WORLD_SPAN, by: 360 + R() * 520, ph: R() * TAU, sp: .5 + R(), s: 3 + R() * 5 }); })();
 const RAINL = [{ n: 150, v: .85, len: 14, w: .8, a: .22 }, { n: 170, v: 1.15, len: 22, w: 1.05, a: .3 }, { n: 110, v: 1.5, len: 34, w: 1.5, a: .38 }];
 RAINL.forEach(L => { const R = rngf(L.n * 13); L.rx = Float32Array.from({ length: L.n }, () => R()); L.ry = Float32Array.from({ length: L.n }, () => R()); });
 
@@ -1941,18 +2541,18 @@ function updateParticles(dt, t) {
   for (let i = splashes.length - 1; i >= 0; i--) { splashes[i].age += dt; if (splashes[i].age > .5) splashes.splice(i, 1); }
   if (W.rain > .05) {
     const n = W.rain * 60 * Q * dt, whole = Math.floor(n) + (Math.random() < n % 1 ? 1 : 0);
-    for (let i = 0; i < whole && splashes.length < 90; i++) splashes.push({ x: Math.random() * WORLD_W, y: HORIZON + 40 + Math.pow(Math.random(), .7) * (WORLD_H - HORIZON - 50), age: 0 });
+    for (let i = 0; i < whole && splashes.length < 90; i++) splashes.push({ x: WX0 + Math.random() * WORLD_SPAN, y: HORIZON + 40 + Math.pow(Math.random(), .7) * (WORLD_H - HORIZON - 50), age: 0 });
   }
   const spawn = (rate, mk) => { const n = rate * Q * dt, w = Math.floor(n) + (Math.random() < n % 1 ? 1 : 0); for (let i = 0; i < w; i++) addP(mk()); };
-  spawn(W.leaves * 4, () => ({ k: 'leaf', x: -60 + Math.random() * WORLD_W * .8, y: 200 + Math.random() * 420, vx: 40, vy: 20, age: 0, life: 14, gy: 660 + Math.random() * 230, rot: Math.random() * TAU, vr: (Math.random() - .5) * 5, s: 5 + Math.random() * 5, ph: Math.random() * TAU, hue: Math.random(), wild: 1 }));
-  spawn(W.petals * 10, () => ({ k: 'petal', x: -60 + Math.random() * WORLD_W * .9, y: 150 + Math.random() * 450, vx: 30, vy: 16, age: 0, life: 16, gy: 660 + Math.random() * 230, rot: Math.random() * TAU, vr: (Math.random() - .5) * 4, s: 3 + Math.random() * 3, ph: Math.random() * TAU, hue: Math.random(), wild: 1 }));
+  spawn(W.leaves * 4, () => ({ k: 'leaf', x: WX0 - 60 + Math.random() * WORLD_SPAN * .8, y: 200 + Math.random() * 420, vx: 40, vy: 20, age: 0, life: 14, gy: 660 + Math.random() * 230, rot: Math.random() * TAU, vr: (Math.random() - .5) * 5, s: 5 + Math.random() * 5, ph: Math.random() * TAU, hue: Math.random(), wild: 1 }));
+  spawn(W.petals * 10, () => ({ k: 'petal', x: WX0 - 60 + Math.random() * WORLD_SPAN * .9, y: 150 + Math.random() * 450, vx: 30, vy: 16, age: 0, life: 16, gy: 660 + Math.random() * 230, rot: Math.random() * TAU, vr: (Math.random() - .5) * 4, s: 3 + Math.random() * 3, ph: Math.random() * TAU, hue: Math.random(), wild: 1 }));
   for (const pl of S.plants) {
     const it = ITEMS[pl.item]; if (!it) continue; const slot = SLOTS[pl.slot];
     if (it.emit) emitFrom(pl, it, slot, dt, growthOf(pl));
     if (it.sound === 'chime' && !pl._cd) pl._cd = 0;
     if (it.sound === 'chime') { pl._cd -= dt; if (pl._cd <= 0 && windAt(slot.x, t) > .62 && Math.random() < dt * .8) { pl._cd = 2 + Math.random() * 3; if (typeof windChimeNote === 'function') windChimeNote(); } }
   }
-  if (W.spores > .05) spawn(W.spores * 3, () => ({ k: 'spore', x: Math.random() * WORLD_W, y: 560 + Math.random() * 330, vx: (Math.random() - .5) * 8, vy: -6 - Math.random() * 10, age: 0, life: 6 + Math.random() * 4, s: 4 + Math.random() * 5, col: Math.random() > .5 ? [140, 255, 200] : [190, 150, 255], ph: Math.random() * TAU }));
+  if (W.spores > .05) spawn(W.spores * 3, () => ({ k: 'spore', x: WX0 + Math.random() * WORLD_SPAN, y: 560 + Math.random() * 330, vx: (Math.random() - .5) * 8, vy: -6 - Math.random() * 10, age: 0, life: 6 + Math.random() * 4, s: 4 + Math.random() * 5, col: Math.random() > .5 ? [140, 255, 200] : [190, 150, 255], ph: Math.random() * TAU }));
   for (let i = P.length - 1; i >= 0; i--) {
     const p = P[i]; p.age += dt;
     if (p.age > p.life) { P.splice(i, 1); continue; }
@@ -1961,7 +2561,7 @@ function updateParticles(dt, t) {
       p.vx += (wv * 120 + 6 - p.vx) * dt * 1.2; p.vy += (22 + Math.sin(t * 2 + p.ph) * 14 - p.vy) * dt * 1.5;
       p.x += p.vx * dt; p.y += p.vy * dt; p.rot += p.vr * dt;
       if (p.y >= p.gy) { p.y = p.gy; p.vx *= .2; p.vy = 0; p.vr = 0; p.life = Math.min(p.life, p.age + 1.6); }
-      if (p.x > WORLD_W + 80) P.splice(i, 1);
+      if (p.x > WX1 + 80) P.splice(i, 1);
     } else if (p.k === 'spore') { p.x += (p.vx + Math.sin(t * .8 + p.ph) * 6) * dt; p.y += p.vy * dt; }
     else if (p.k === 'ember') { p.x += (p.vx + Math.sin(t * 5 + p.ph) * 10 + windAt(p.x, t) * 30) * dt; p.y += p.vy * dt; p.vy *= .99; }
     else if (p.k === 'spark') { p.x += p.vx * dt; p.y += p.vy * dt; p.vx *= .95; p.vy *= .95; p.vy += 10 * dt; }
@@ -2079,7 +2679,7 @@ function strike() {
 function lightningI() { if (lightT > 2) return 0; const T = lightT; return T < .07 ? 1 : T < .13 ? .15 : T < .2 ? .85 : Math.exp(-(T - .2) * 6); }
 
 /* ---------- main render ---------- */
-const regionA = { west: 1, east: 1, far: 1 };
+const regionA = { west: 1, east: 1, far: 1, rain: 1 };
 function render(dt, t) {
   const horizY = offY + HORIZON * SC;
   /* sky */
@@ -2106,22 +2706,40 @@ function render(dt, t) {
     }
     ctx.globalAlpha = 1;
   }
-  /* hills */
+  /* hills: each layer is drawn in the home palette, then a greener pass is laid over it where the land turns to rainforest */
   const deep = [20, 42, 40];
+  const vivid = col => [col[0] * .62, Math.min(255, col[1] * 1.12 + 22), col[2] * .72];
+  const lushAtScreen = sx => lush((sx - offX) / SC);
   const hill = (fac, base, amp, freq, col, ph) => {
-    ctx.fillStyle = rgba(col); ctx.beginPath(); ctx.moveTo(-10, VH);
-    for (let sx = -10; sx <= VW + 10; sx += 10) { const u = (sx - offX * fac) / SC; ctx.lineTo(sx, offY + (base - amp * hn(u * freq + ph)) * SC); }
-    ctx.lineTo(VW + 10, VH); ctx.closePath(); ctx.fill();
+    const path = () => { ctx.beginPath(); ctx.moveTo(-10, VH); for (let sx = -10; sx <= VW + 10; sx += 10) { const u = (sx - offX * fac) / SC; ctx.lineTo(sx, offY + (base - amp * hn(u * freq + ph)) * SC); } ctx.lineTo(VW + 10, VH); ctx.closePath(); };
+    ctx.fillStyle = rgba(col); path(); ctx.fill();
+    let any = false; const gl = ctx.createLinearGradient(0, 0, VW, 0), vc = vivid(col);
+    for (let i = 0; i <= 12; i++) { const L = lushAtScreen(VW * i / 12); if (L > .01) any = true; gl.addColorStop(i / 12, rgba(vc, .9 * L)); }
+    if (any) { ctx.fillStyle = gl; path(); ctx.fill(); }
   };
   const cFar = mixc(W.skyBot, deep, .5), cMid = mixc(W.skyBot, deep, .68), cNear = mixc(W.skyBot, deep, .8);
   hill(.22, HORIZON - 4, 110, .0036, cFar, 1);
-  ctx.fillStyle = rgba(mixc(cFar, [10, 26, 26], .25)); ctx.beginPath();
+  /* far tree line: conifers thin out as broadleaf canopy takes over */
+  const farTone = mixc(cFar, [10, 26, 26], .25);
+  ctx.fillStyle = rgba(farTone); ctx.beginPath();
   for (const pn of PINES) {
     const sx = pn.u * SC + offX * .22; if (sx < -30 || sx > VW + 30) continue;
+    if (lushAtScreen(sx) > pn.th * .9 + .05) continue;
     const by = offY + (HORIZON - 4 - 110 * hn(pn.u * .0036 + 1) + 6) * SC, h = pn.h * SC * .8, w = pn.w * SC;
     ctx.moveTo(sx, by - h); ctx.lineTo(sx + w, by); ctx.lineTo(sx - w, by); ctx.moveTo(sx, by - h * .7); ctx.lineTo(sx + w * 1.3, by - h * .08); ctx.lineTo(sx - w * 1.3, by - h * .08);
   }
   ctx.fill();
+  {
+    const jc = mixc(farTone, [18, 78, 52], .55); ctx.fillStyle = rgba(jc); ctx.beginPath();
+    for (const j of JTREES) {
+      const sx = j.u * SC + offX * .22; if (sx < -120 || sx > VW + 120) continue;
+      const L = lushAtScreen(sx); if (L < j.th * .85 + .02) continue;
+      const by = offY + (HORIZON - 4 - 110 * hn(j.u * .0036 + 1) + 6) * SC, gr = clamp((L - j.th * .85) * 3, .35, 1), hh = j.h * SC * gr, rr = j.r * SC * (.8 + gr * .35);
+      for (let q = 0; q < j.n; q++) { const a = j.ph + q * 2.1, cx = sx + Math.cos(a) * rr * .8, cy = by - hh + Math.sin(a) * rr * .35; ctx.moveTo(cx + rr * .85, cy); ctx.arc(cx, cy, rr * .85, 0, TAU); }
+      ctx.moveTo(sx - 3 * SC, by); ctx.lineTo(sx - 2 * SC, by - hh); ctx.lineTo(sx + 2 * SC, by - hh); ctx.lineTo(sx + 3 * SC, by);
+    }
+    ctx.fill();
+  }
   const fogG = ctx.createLinearGradient(0, horizY - 140 * SC, 0, horizY + 40 * SC);
   fogG.addColorStop(0, rgba(W.fogCol, 0)); fogG.addColorStop(.65, rgba(W.fogCol, .55 * W.fog)); fogG.addColorStop(1, rgba(W.fogCol, 0));
   ctx.fillStyle = fogG; ctx.fillRect(0, horizY - 140 * SC, VW, 180 * SC);
@@ -2129,7 +2747,8 @@ function render(dt, t) {
   ctx.fillStyle = rgba(mixc(cMid, [8, 22, 22], .3)); ctx.beginPath();
   for (const b of BLOBS) {
     const sx = b.u * SC + offX * .5; if (sx < -60 || sx > VW + 60) continue;
-    const by = offY + (HORIZON + 14 - 70 * hn(b.u * .0058 + 4) + 10 + b.dy) * SC, r = b.r * SC;
+    const L = lushAtScreen(sx), by = offY + (HORIZON + 14 - 70 * hn(b.u * .0058 + 4) + 10 + b.dy) * SC, r = b.r * SC * (1 + L * .55);
+    if (L > .3 && b.th < L) { ctx.moveTo(sx + r * 1.4, by - r * .9); ctx.ellipse(sx, by - r * .9, r * 1.4, r * 1.05, 0, 0, TAU); }
     ctx.moveTo(sx + r, by - r * .6); ctx.arc(sx, by - r * .6, r, 0, TAU);
   }
   ctx.fill();
@@ -2140,10 +2759,10 @@ function render(dt, t) {
   if (W.shafts > .03) drawShafts(t, horizY);
   /* world */
   ctx.setTransform(DPR * SC, 0, 0, DPR * SC, DPR * offX, DPR * offY);
-  ctx.drawImage(groundCv, 0, GROUND_TOP, WORLD_W, WORLD_H - GROUND_TOP);
-  ctx.fillStyle = '#1b3523'; ctx.fillRect(0, WORLD_H - 1, WORLD_W, 2400);
+  ctx.drawImage(groundCv, WX0, GROUND_TOP, WORLD_SPAN, WORLD_H - GROUND_TOP);
+  { const fg = ctx.createLinearGradient(WX0, 0, WORLD_W, 0); for (let i = 0; i <= 12; i++) { const x = WX0 + (WORLD_W - WX0) * i / 12, L = lush(x); fg.addColorStop(i / 12, `rgb(${(27 + 4 * L) | 0},${(53 + 21 * L) | 0},${(35 + 4 * L) | 0})`); } ctx.fillStyle = fg; ctx.fillRect(WX0, WORLD_H - 1, WORLD_SPAN, 2400); }
   const sheen = ctx.createLinearGradient(0, HORIZON, 0, WORLD_H); sheen.addColorStop(0, 'rgba(150,190,205,0)'); sheen.addColorStop(1, `rgba(150,190,205,${(.1 * W.rain).toFixed(3)})`);
-  ctx.fillStyle = sheen; ctx.fillRect(0, HORIZON, WORLD_W, WORLD_H - HORIZON);
+  ctx.fillStyle = sheen; ctx.fillRect(WX0, HORIZON, WORLD_SPAN, WORLD_H - HORIZON);
   for (const s of splashes) { const p = s.age / .5, sc = .4 + (s.y - HORIZON) / (WORLD_H - HORIZON); ctx.strokeStyle = `rgba(210,235,240,${(.4 * (1 - p)).toFixed(3)})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.ellipse(s.x, s.y, (2 + p * 9) * sc, (2 + p * 9) * sc * .32, 0, 0, TAU); ctx.stroke(); }
   /* slot rings */
   const placing = UI.placing || UI.moving;
@@ -2164,7 +2783,7 @@ function render(dt, t) {
   /* mist bands + items sorted back to front */
   const items = S.plants.filter(p => !(UI.moving && p.id === UI.moving)).slice().sort((a, b) => SLOTS[a.slot].y - SLOTS[b.slot].y);
   const bands = [{ y: 612, a: .22 }, { y: 706, a: .13 }, { y: 805, a: .06 }]; let bi = 0;
-  const bandDraw = b => { const g = ctx.createLinearGradient(0, b.y - 150, 0, b.y + 20); g.addColorStop(0, rgba(W.fogCol, 0)); g.addColorStop(.7, rgba(W.fogCol, b.a * W.fog * 1.4)); g.addColorStop(1, rgba(W.fogCol, 0)); ctx.fillStyle = g; ctx.fillRect(0, b.y - 150, WORLD_W, 170); };
+  const bandDraw = b => { const g = ctx.createLinearGradient(0, b.y - 150, 0, b.y + 20); g.addColorStop(0, rgba(W.fogCol, 0)); g.addColorStop(.7, rgba(W.fogCol, b.a * W.fog * 1.4)); g.addColorStop(1, rgba(W.fogCol, 0)); ctx.fillStyle = g; ctx.fillRect(WX0, b.y - 150, WORLD_SPAN, 170); };
   const drawAt = (p) => drawItem(p, t);
   const ghost = (UI.placing && UI.hover >= 0) ? { item: UI.placing, slot: UI.hover, seed: 1 } : (UI.moving && UI.hover >= 0 ? Object.assign({}, S.plants.find(p => p.id === UI.moving), { slot: UI.hover }) : null);
   let ghostDone = !ghost;
@@ -2188,7 +2807,7 @@ function render(dt, t) {
   for (let k = 0; k < 3; k++) { ctx.strokeStyle = gcols[k]; ctx.beginPath(); const a = blades[k]; for (let i = 0; i < a.length; i += 5) { ctx.moveTo(a[i], a[i + 1]); ctx.quadraticCurveTo(a[i] + a[i + 2] * .3, a[i + 1] - a[i + 3] * .6, a[i] + a[i + 2], a[i + 1] - a[i + 3]); } ctx.stroke(); }
   /* low mist in front */
   for (let i = 0; i < 2; i++) {
-    const spr = glowSprite(quant(W.fogCol)), x = ((i * 900 + t * (5 + i * 4)) % (WORLD_W + 1000)) - 500;
+    const spr = glowSprite(quant(W.fogCol)), x = ((i * 900 + t * (5 + i * 4)) % (WORLD_SPAN + 1000)) + WX0 - 500;
     ctx.globalAlpha = clamp(.3 * W.fog, 0, .6); ctx.drawImage(spr, x, 760 + i * 70, 1000, 200);
   }
   ctx.globalAlpha = 1;
@@ -2221,7 +2840,7 @@ function render(dt, t) {
   }
   const npl = Math.floor(W.pollen * POLLEN.length * Q);
   for (let i = 0; i < npl; i++) {
-    const f = POLLEN[i], x = ((f.bx + t * (6 + windAt(f.bx, t) * 70) * f.sp) % (WORLD_W + 200)) - 100, y = f.by + Math.sin(t * .5 * f.sp + f.ph) * 26;
+    const f = POLLEN[i], x = WX0 + (((f.bx - WX0) + t * (6 + windAt(f.bx, t) * 70) * f.sp) % (WORLD_SPAN + 200)) - 100, y = f.by + Math.sin(t * .5 * f.sp + f.ph) * 26;
     glowAt([255, 244, 190], x, y, f.s * 2, .5 * W.pollen * (.5 + .5 * Math.sin(t * 1.3 + f.ph)));
   }
   ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
@@ -2237,19 +2856,19 @@ function render(dt, t) {
 }
 function drawLocked(dt, t) {
   const lab = (txt, x, y, a) => { ctx.save(); ctx.globalAlpha = a; ctx.font = '500 24px "Pixelify Sans","Courier New",monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#f2f6ee'; ctx.shadowColor = 'rgba(0,0,0,.45)'; ctx.shadowBlur = 8; ctx.fillText(txt, x, y); ctx.restore(); };
-  for (const r of ['west', 'east', 'far']) {
+  for (const r of ['west', 'east', 'far', 'rain']) {
     const locked = !isRegionUnlocked(r); regionA[r] += ((locked ? 1 : 0) - regionA[r]) * Math.min(1, dt * 1.2);
     const a = regionA[r]; if (a < .01) continue;
     const fc = quant(mixc(W.fogCol, [210, 225, 220], .4));
-    if (r === 'west' || r === 'east') {
-      const R0 = REGIONS[r], x0 = R0.x0, x1 = R0.x1, g = ctx.createLinearGradient(r === 'west' ? x0 : x1, 0, r === 'west' ? x1 : x0, 0);
+    if (r === 'west' || r === 'east' || r === 'rain') {
+      const R0 = REGIONS[r], x0 = R0.x0, x1 = R0.x1, g = ctx.createLinearGradient(r === 'east' ? x1 : x0, 0, r === 'east' ? x0 : x1, 0);
       g.addColorStop(0, rgba(fc, .93 * a)); g.addColorStop(.7, rgba(fc, .8 * a)); g.addColorStop(1, rgba(fc, 0));
       ctx.fillStyle = g; ctx.fillRect(Math.min(x0, x1) - 30, HORIZON - 20, Math.abs(x1 - x0) + 60, WORLD_H - HORIZON + 20);
-      const cx = r === 'west' ? 215 : 1590;
+      const cx = r === 'west' ? 215 : r === 'rain' ? -480 : 1590;
       lab(R0.name, cx, 720, a * .95); ctx.save(); ctx.globalAlpha = a * .8; ctx.font = '500 14px "Pixelify Sans","Courier New",monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#e9f0e7'; ctx.fillText('opens at ' + R0.at.toLocaleString('en-US') + ' min of focus', cx, 746); ctx.restore();
     } else {
       const g = ctx.createLinearGradient(0, 520, 0, 618); g.addColorStop(0, rgba(fc, 0)); g.addColorStop(.5, rgba(fc, .78 * a)); g.addColorStop(1, rgba(fc, 0));
-      ctx.fillStyle = g; ctx.fillRect(0, 520, WORLD_W, 100);
+      ctx.fillStyle = g; ctx.fillRect(WX0, 520, WORLD_SPAN, 100);
       lab(REGIONS.far.name + ' · opens at ' + REGIONS.far.at.toLocaleString('en-US') + ' min', 900, 572, a * .9);
     }
   }
@@ -2310,7 +2929,7 @@ function frame(ts) {
 }
 function startScene() {
   buildGround(); resize(); setWeather(S.set.weather, true);
-  for (const r of ['west', 'east', 'far']) regionA[r] = isRegionUnlocked(r) ? 0 : 1;
+  for (const r of ['west', 'east', 'far', 'rain']) regionA[r] = isRegionUnlocked(r) ? 0 : 1;
   window.addEventListener('resize', resize);
   requestAnimationFrame(ts => { lastFrame = ts / 1000; frame(ts); });
 }
@@ -2714,7 +3333,7 @@ function renderShop() {
     const it = ITEMS[id], st = itemState(it);
     const note = st === 'locked' ? `Opens at ${nf(itemUnlockAt(id))} min of focus` : st === 'poor' ? `Needs ${nf(it.cost - S.tokens)} more` : it.desc;
     return `<button class="item" data-item="${id}" data-state="${st}" aria-label="${esc(it.name)}, ${it.cost} tokens">
-      <canvas class="pv" data-item="${id}"></canvas><span class="nm">${esc(it.name)}</span>
+      <canvas class="pv" data-item="${id}"></canvas><span class="nm">${esc(it.name)}</span>${it.biome ? `<span class="bio">${esc(it.biome)}</span>` : ''}
       <span class="meta"><span class="cost">${DROP}<span class="num">${nf(it.cost)}</span></span><span class="gr">${it.grow ? '4 stages' : 'decor'}</span></span>
       <span class="note">${esc(note)}</span></button>`;
   }).join('');
@@ -2767,7 +3386,7 @@ function renderJourney() {
   const next = MILESTONES.find(m => life < m.at && !S.devf.unlockAll);
   const rows = MILESTONES.map(m => {
     const done = S.devf.unlockAll || life >= m.at, isNext = next && m.id === next.id, prev = MILESTONES[MILESTONES.indexOf(m) - 1], base = prev ? prev.at : 0;
-    const rw = [...(m.items || []).map(i => ITEMS[i].name), ...(m.weather || []).map(w => WEATHERS[w].name + ' weather'), ...(m.region ? [REGIONS[m.region].name + (m.region === 'far' ? ' (+8 plots)' : ' (+6 plots)')] : [])];
+    const rw = [...(m.items || []).map(i => ITEMS[i].name), ...(m.weather || []).map(w => WEATHERS[w].name + ' weather'), ...(m.region ? [REGIONS[m.region].name + ' (+' + SLOTS.filter(q => q.region === m.region).length + ' plots)'] : [])];
     return `<div class="ms${done ? ' done' : ''}${isNext ? ' next' : ''}"><div class="mk">${done ? CHECK : ''}</div><div><div class="t"><span class="nm">${esc(m.name)}</span><span class="at num">${nf(m.at)} min</span></div>
       <div class="ds" style="color:var(--muted);margin-top:2px">${esc(m.blurb)}</div><div class="rw">${rw.map(r => `<span>${esc(r)}</span>`).join('')}</div>
       ${isNext ? `<div class="meter"><i style="width:${clamp((life - base) / (m.at - base) * 100, 2, 100)}%"></i></div><div class="ds" style="color:var(--lantern);margin-top:5px">${nf(m.at - life)} min to go</div>` : ''}</div></div>`;
@@ -2777,7 +3396,7 @@ function renderJourney() {
     <div class="stat"><div class="eyebrow">Sessions</div><div class="v num">${nf(S.sessions)}</div></div><div class="stat"><div class="eyebrow">Longest</div><div class="v num">${fmtDur(S.longestMs / 60000)}</div></div></div>
     ${renderHeat()}<div class="eyebrow" style="margin:18px 0 2px">Milestones</div>${rows}`;
 }
-const WXICO = { rain: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="0" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="9" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="0" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="9" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="7" width="1" height="1" fill="#5ab0d4"/><rect x="5" y="7" width="1" height="1" fill="#5ab0d4"/><rect x="8" y="7" width="1" height="1" fill="#5ab0d4"/><rect x="1" y="8" width="1" height="1" fill="#5ab0d4"/><rect x="4" y="8" width="1" height="1" fill="#5ab0d4"/><rect x="7" y="8" width="1" height="1" fill="#5ab0d4"/></svg>', breeze: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="2" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="3" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="4" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="5" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="6" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="7" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="8" y="2" width="1" height="1" fill="#d6e6e2"/><rect x="8" y="3" width="1" height="1" fill="#d6e6e2"/><rect x="2" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="3" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="4" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="5" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="6" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="7" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="0" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="1" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="2" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="3" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="4" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="5" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="6" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="7" y="7" width="1" height="1" fill="#d6e6e2"/><rect x="7" y="8" width="1" height="1" fill="#d6e6e2"/></svg>', mist: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="3" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="4" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="5" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="6" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="7" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="1" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="2" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="3" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="4" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="5" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="6" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="7" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="8" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="0" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="1" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="2" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="3" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="4" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="5" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="6" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="7" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="2" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="3" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="4" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="5" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="6" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="7" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="8" y="7" width="1" height="1" fill="#d3e3dc"/></svg>', storm: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="1" width="1" height="1" fill="#9fb2bb"/><rect x="4" y="1" width="1" height="1" fill="#9fb2bb"/><rect x="5" y="1" width="1" height="1" fill="#9fb2bb"/><rect x="6" y="1" width="1" height="1" fill="#9fb2bb"/><rect x="2" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="3" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="4" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="5" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="6" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="7" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="1" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="2" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="3" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="4" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="5" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="6" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="7" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="8" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="0" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="1" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="2" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="3" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="4" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="5" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="6" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="7" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="8" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="9" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="4" y="5" width="1" height="1" fill="#ffd45a"/><rect x="5" y="5" width="1" height="1" fill="#ffd45a"/><rect x="3" y="6" width="1" height="1" fill="#ffd45a"/><rect x="4" y="6" width="1" height="1" fill="#ffd45a"/><rect x="2" y="7" width="1" height="1" fill="#ffd45a"/><rect x="3" y="7" width="1" height="1" fill="#ffd45a"/><rect x="4" y="7" width="1" height="1" fill="#ffd45a"/><rect x="5" y="7" width="1" height="1" fill="#ffd45a"/><rect x="6" y="7" width="1" height="1" fill="#ffd45a"/><rect x="5" y="8" width="1" height="1" fill="#ffd45a"/><rect x="6" y="8" width="1" height="1" fill="#ffd45a"/><rect x="4" y="9" width="1" height="1" fill="#ffd45a"/></svg>', petals: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="1" height="1" fill="#f0a6bb"/><rect x="6" y="2" width="1" height="1" fill="#f0a6bb"/><rect x="2" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="3" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="4" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="5" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="6" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="7" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="2" y="4" width="1" height="1" fill="#f0a6bb"/><rect x="3" y="4" width="1" height="1" fill="#f0a6bb"/><rect x="4" y="4" width="1" height="1" fill="#ffd45a"/><rect x="5" y="4" width="1" height="1" fill="#ffd45a"/><rect x="6" y="4" width="1" height="1" fill="#f0a6bb"/><rect x="7" y="4" width="1" height="1" fill="#f0a6bb"/><rect x="2" y="5" width="1" height="1" fill="#f0a6bb"/><rect x="3" y="5" width="1" height="1" fill="#f0a6bb"/><rect x="4" y="5" width="1" height="1" fill="#ffd45a"/><rect x="5" y="5" width="1" height="1" fill="#ffd45a"/><rect x="6" y="5" width="1" height="1" fill="#f0a6bb"/><rect x="7" y="5" width="1" height="1" fill="#f0a6bb"/><rect x="2" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="3" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="4" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="5" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="6" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="7" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="3" y="7" width="1" height="1" fill="#f0a6bb"/><rect x="6" y="7" width="1" height="1" fill="#f0a6bb"/></svg>', firefly: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="1" height="1" fill="#d9f26a"/><rect x="7" y="2" width="1" height="1" fill="#d9f26a"/><rect x="3" y="4" width="1" height="1" fill="#d9f26a"/><rect x="2" y="5" width="1" height="1" fill="#d9f26a"/><rect x="3" y="5" width="1" height="1" fill="#d9f26a"/><rect x="4" y="5" width="1" height="1" fill="#d9f26a"/><rect x="3" y="6" width="1" height="1" fill="#d9f26a"/><rect x="7" y="6" width="1" height="1" fill="#d9f26a"/><rect x="6" y="7" width="1" height="1" fill="#d9f26a"/><rect x="7" y="7" width="1" height="1" fill="#d9f26a"/><rect x="8" y="7" width="1" height="1" fill="#d9f26a"/><rect x="1" y="8" width="1" height="1" fill="#d9f26a"/><rect x="7" y="8" width="1" height="1" fill="#d9f26a"/></svg>', aurora: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="1" height="1" fill="#6ee0a4"/><rect x="3" y="1" width="1" height="1" fill="#6ee0a4"/><rect x="4" y="1" width="1" height="1" fill="#6ee0a4"/><rect x="1" y="2" width="1" height="1" fill="#6ee0a4"/><rect x="2" y="2" width="1" height="1" fill="#6ee0a4"/><rect x="3" y="2" width="1" height="1" fill="#6ee0a4"/><rect x="4" y="2" width="1" height="1" fill="#6ee0a4"/><rect x="5" y="2" width="1" height="1" fill="#6ee0a4"/><rect x="7" y="2" width="1" height="1" fill="#b58cf0"/><rect x="8" y="2" width="1" height="1" fill="#b58cf0"/><rect x="0" y="3" width="1" height="1" fill="#6ee0a4"/><rect x="1" y="3" width="1" height="1" fill="#6ee0a4"/><rect x="2" y="3" width="1" height="1" fill="#6ee0a4"/><rect x="3" y="3" width="1" height="1" fill="#6ee0a4"/><rect x="6" y="3" width="1" height="1" fill="#b58cf0"/><rect x="7" y="3" width="1" height="1" fill="#b58cf0"/><rect x="8" y="3" width="1" height="1" fill="#b58cf0"/><rect x="0" y="4" width="1" height="1" fill="#6ee0a4"/><rect x="1" y="4" width="1" height="1" fill="#6ee0a4"/><rect x="2" y="4" width="1" height="1" fill="#6ee0a4"/><rect x="5" y="4" width="1" height="1" fill="#b58cf0"/><rect x="6" y="4" width="1" height="1" fill="#b58cf0"/><rect x="7" y="4" width="1" height="1" fill="#b58cf0"/><rect x="8" y="4" width="1" height="1" fill="#b58cf0"/><rect x="0" y="5" width="1" height="1" fill="#6ee0a4"/><rect x="1" y="5" width="1" height="1" fill="#6ee0a4"/><rect x="4" y="5" width="1" height="1" fill="#b58cf0"/><rect x="5" y="5" width="1" height="1" fill="#b58cf0"/><rect x="6" y="5" width="1" height="1" fill="#b58cf0"/><rect x="7" y="5" width="1" height="1" fill="#b58cf0"/><rect x="0" y="6" width="1" height="1" fill="#4fc7c7"/><rect x="4" y="6" width="1" height="1" fill="#b58cf0"/><rect x="5" y="6" width="1" height="1" fill="#b58cf0"/><rect x="6" y="6" width="1" height="1" fill="#b58cf0"/><rect x="7" y="6" width="1" height="1" fill="#b58cf0"/></svg>' };
+const WXICO = { rain: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="1" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="2" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="3" width="1" height="1" fill="#e8f0f0"/><rect x="0" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="9" y="4" width="1" height="1" fill="#e8f0f0"/><rect x="0" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="9" y="5" width="1" height="1" fill="#e8f0f0"/><rect x="1" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="3" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="4" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="7" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="8" y="6" width="1" height="1" fill="#e8f0f0"/><rect x="2" y="7" width="1" height="1" fill="#5ab0d4"/><rect x="5" y="7" width="1" height="1" fill="#5ab0d4"/><rect x="8" y="7" width="1" height="1" fill="#5ab0d4"/><rect x="1" y="8" width="1" height="1" fill="#5ab0d4"/><rect x="4" y="8" width="1" height="1" fill="#5ab0d4"/><rect x="7" y="8" width="1" height="1" fill="#5ab0d4"/></svg>', breeze: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="2" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="3" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="4" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="5" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="6" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="7" y="1" width="1" height="1" fill="#d6e6e2"/><rect x="8" y="2" width="1" height="1" fill="#d6e6e2"/><rect x="8" y="3" width="1" height="1" fill="#d6e6e2"/><rect x="2" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="3" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="4" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="5" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="6" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="7" y="4" width="1" height="1" fill="#d6e6e2"/><rect x="0" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="1" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="2" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="3" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="4" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="5" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="6" y="6" width="1" height="1" fill="#d6e6e2"/><rect x="7" y="7" width="1" height="1" fill="#d6e6e2"/><rect x="7" y="8" width="1" height="1" fill="#d6e6e2"/></svg>', mist: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="3" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="4" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="5" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="6" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="7" y="1" width="1" height="1" fill="#d3e3dc"/><rect x="1" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="2" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="3" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="4" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="5" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="6" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="7" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="8" y="3" width="1" height="1" fill="#d3e3dc"/><rect x="0" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="1" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="2" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="3" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="4" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="5" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="6" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="7" y="5" width="1" height="1" fill="#d3e3dc"/><rect x="2" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="3" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="4" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="5" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="6" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="7" y="7" width="1" height="1" fill="#d3e3dc"/><rect x="8" y="7" width="1" height="1" fill="#d3e3dc"/></svg>', storm: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="1" width="1" height="1" fill="#9fb2bb"/><rect x="4" y="1" width="1" height="1" fill="#9fb2bb"/><rect x="5" y="1" width="1" height="1" fill="#9fb2bb"/><rect x="6" y="1" width="1" height="1" fill="#9fb2bb"/><rect x="2" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="3" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="4" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="5" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="6" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="7" y="2" width="1" height="1" fill="#9fb2bb"/><rect x="1" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="2" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="3" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="4" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="5" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="6" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="7" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="8" y="3" width="1" height="1" fill="#9fb2bb"/><rect x="0" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="1" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="2" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="3" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="4" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="5" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="6" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="7" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="8" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="9" y="4" width="1" height="1" fill="#9fb2bb"/><rect x="4" y="5" width="1" height="1" fill="#ffd45a"/><rect x="5" y="5" width="1" height="1" fill="#ffd45a"/><rect x="3" y="6" width="1" height="1" fill="#ffd45a"/><rect x="4" y="6" width="1" height="1" fill="#ffd45a"/><rect x="2" y="7" width="1" height="1" fill="#ffd45a"/><rect x="3" y="7" width="1" height="1" fill="#ffd45a"/><rect x="4" y="7" width="1" height="1" fill="#ffd45a"/><rect x="5" y="7" width="1" height="1" fill="#ffd45a"/><rect x="6" y="7" width="1" height="1" fill="#ffd45a"/><rect x="5" y="8" width="1" height="1" fill="#ffd45a"/><rect x="6" y="8" width="1" height="1" fill="#ffd45a"/><rect x="4" y="9" width="1" height="1" fill="#ffd45a"/></svg>', petals: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="1" height="1" fill="#f0a6bb"/><rect x="6" y="2" width="1" height="1" fill="#f0a6bb"/><rect x="2" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="3" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="4" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="5" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="6" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="7" y="3" width="1" height="1" fill="#f0a6bb"/><rect x="2" y="4" width="1" height="1" fill="#f0a6bb"/><rect x="3" y="4" width="1" height="1" fill="#f0a6bb"/><rect x="4" y="4" width="1" height="1" fill="#ffd45a"/><rect x="5" y="4" width="1" height="1" fill="#ffd45a"/><rect x="6" y="4" width="1" height="1" fill="#f0a6bb"/><rect x="7" y="4" width="1" height="1" fill="#f0a6bb"/><rect x="2" y="5" width="1" height="1" fill="#f0a6bb"/><rect x="3" y="5" width="1" height="1" fill="#f0a6bb"/><rect x="4" y="5" width="1" height="1" fill="#ffd45a"/><rect x="5" y="5" width="1" height="1" fill="#ffd45a"/><rect x="6" y="5" width="1" height="1" fill="#f0a6bb"/><rect x="7" y="5" width="1" height="1" fill="#f0a6bb"/><rect x="2" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="3" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="4" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="5" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="6" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="7" y="6" width="1" height="1" fill="#f0a6bb"/><rect x="3" y="7" width="1" height="1" fill="#f0a6bb"/><rect x="6" y="7" width="1" height="1" fill="#f0a6bb"/></svg>', firefly: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="1" height="1" fill="#d9f26a"/><rect x="7" y="2" width="1" height="1" fill="#d9f26a"/><rect x="3" y="4" width="1" height="1" fill="#d9f26a"/><rect x="2" y="5" width="1" height="1" fill="#d9f26a"/><rect x="3" y="5" width="1" height="1" fill="#d9f26a"/><rect x="4" y="5" width="1" height="1" fill="#d9f26a"/><rect x="3" y="6" width="1" height="1" fill="#d9f26a"/><rect x="7" y="6" width="1" height="1" fill="#d9f26a"/><rect x="6" y="7" width="1" height="1" fill="#d9f26a"/><rect x="7" y="7" width="1" height="1" fill="#d9f26a"/><rect x="8" y="7" width="1" height="1" fill="#d9f26a"/><rect x="1" y="8" width="1" height="1" fill="#d9f26a"/><rect x="7" y="8" width="1" height="1" fill="#d9f26a"/></svg>', aurora: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="1" height="1" fill="#6ee0a4"/><rect x="3" y="1" width="1" height="1" fill="#6ee0a4"/><rect x="4" y="1" width="1" height="1" fill="#6ee0a4"/><rect x="1" y="2" width="1" height="1" fill="#6ee0a4"/><rect x="2" y="2" width="1" height="1" fill="#6ee0a4"/><rect x="3" y="2" width="1" height="1" fill="#6ee0a4"/><rect x="4" y="2" width="1" height="1" fill="#6ee0a4"/><rect x="5" y="2" width="1" height="1" fill="#6ee0a4"/><rect x="7" y="2" width="1" height="1" fill="#b58cf0"/><rect x="8" y="2" width="1" height="1" fill="#b58cf0"/><rect x="0" y="3" width="1" height="1" fill="#6ee0a4"/><rect x="1" y="3" width="1" height="1" fill="#6ee0a4"/><rect x="2" y="3" width="1" height="1" fill="#6ee0a4"/><rect x="3" y="3" width="1" height="1" fill="#6ee0a4"/><rect x="6" y="3" width="1" height="1" fill="#b58cf0"/><rect x="7" y="3" width="1" height="1" fill="#b58cf0"/><rect x="8" y="3" width="1" height="1" fill="#b58cf0"/><rect x="0" y="4" width="1" height="1" fill="#6ee0a4"/><rect x="1" y="4" width="1" height="1" fill="#6ee0a4"/><rect x="2" y="4" width="1" height="1" fill="#6ee0a4"/><rect x="5" y="4" width="1" height="1" fill="#b58cf0"/><rect x="6" y="4" width="1" height="1" fill="#b58cf0"/><rect x="7" y="4" width="1" height="1" fill="#b58cf0"/><rect x="8" y="4" width="1" height="1" fill="#b58cf0"/><rect x="0" y="5" width="1" height="1" fill="#6ee0a4"/><rect x="1" y="5" width="1" height="1" fill="#6ee0a4"/><rect x="4" y="5" width="1" height="1" fill="#b58cf0"/><rect x="5" y="5" width="1" height="1" fill="#b58cf0"/><rect x="6" y="5" width="1" height="1" fill="#b58cf0"/><rect x="7" y="5" width="1" height="1" fill="#b58cf0"/><rect x="0" y="6" width="1" height="1" fill="#4fc7c7"/><rect x="4" y="6" width="1" height="1" fill="#b58cf0"/><rect x="5" y="6" width="1" height="1" fill="#b58cf0"/><rect x="6" y="6" width="1" height="1" fill="#b58cf0"/><rect x="7" y="6" width="1" height="1" fill="#b58cf0"/></svg>', monsoon: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="1" width="1" height="1" fill="#8fd47c"/><rect x="3" y="1" width="1" height="1" fill="#8fd47c"/><rect x="4" y="1" width="1" height="1" fill="#8fd47c"/><rect x="5" y="1" width="1" height="1" fill="#8fd47c"/><rect x="1" y="2" width="1" height="1" fill="#8fd47c"/><rect x="2" y="2" width="1" height="1" fill="#8fd47c"/><rect x="3" y="2" width="1" height="1" fill="#8fd47c"/><rect x="4" y="2" width="1" height="1" fill="#8fd47c"/><rect x="5" y="2" width="1" height="1" fill="#8fd47c"/><rect x="6" y="2" width="1" height="1" fill="#8fd47c"/><rect x="7" y="2" width="1" height="1" fill="#8fd47c"/><rect x="8" y="2" width="1" height="1" fill="#8fd47c"/><rect x="0" y="3" width="1" height="1" fill="#8fd47c"/><rect x="1" y="3" width="1" height="1" fill="#8fd47c"/><rect x="2" y="3" width="1" height="1" fill="#8fd47c"/><rect x="3" y="3" width="1" height="1" fill="#8fd47c"/><rect x="4" y="3" width="1" height="1" fill="#8fd47c"/><rect x="5" y="3" width="1" height="1" fill="#8fd47c"/><rect x="6" y="3" width="1" height="1" fill="#8fd47c"/><rect x="7" y="3" width="1" height="1" fill="#8fd47c"/><rect x="8" y="3" width="1" height="1" fill="#8fd47c"/><rect x="9" y="3" width="1" height="1" fill="#8fd47c"/><rect x="0" y="4" width="1" height="1" fill="#8fd47c"/><rect x="1" y="4" width="1" height="1" fill="#8fd47c"/><rect x="2" y="4" width="1" height="1" fill="#8fd47c"/><rect x="3" y="4" width="1" height="1" fill="#8fd47c"/><rect x="4" y="4" width="1" height="1" fill="#8fd47c"/><rect x="5" y="4" width="1" height="1" fill="#8fd47c"/><rect x="6" y="4" width="1" height="1" fill="#8fd47c"/><rect x="7" y="4" width="1" height="1" fill="#8fd47c"/><rect x="8" y="4" width="1" height="1" fill="#8fd47c"/><rect x="9" y="4" width="1" height="1" fill="#8fd47c"/><rect x="1" y="5" width="1" height="1" fill="#8fd47c"/><rect x="2" y="5" width="1" height="1" fill="#8fd47c"/><rect x="3" y="5" width="1" height="1" fill="#8fd47c"/><rect x="4" y="5" width="1" height="1" fill="#8fd47c"/><rect x="5" y="5" width="1" height="1" fill="#8fd47c"/><rect x="6" y="5" width="1" height="1" fill="#8fd47c"/><rect x="7" y="5" width="1" height="1" fill="#8fd47c"/><rect x="8" y="5" width="1" height="1" fill="#8fd47c"/><rect x="2" y="6" width="1" height="1" fill="#3fb7a0"/><rect x="5" y="6" width="1" height="1" fill="#3fb7a0"/><rect x="8" y="6" width="1" height="1" fill="#3fb7a0"/><rect x="1" y="7" width="1" height="1" fill="#3fb7a0"/><rect x="4" y="7" width="1" height="1" fill="#3fb7a0"/><rect x="7" y="7" width="1" height="1" fill="#3fb7a0"/><rect x="2" y="8" width="1" height="1" fill="#3fb7a0"/><rect x="5" y="8" width="1" height="1" fill="#3fb7a0"/><rect x="8" y="8" width="1" height="1" fill="#3fb7a0"/><rect x="1" y="9" width="1" height="1" fill="#3fb7a0"/><rect x="4" y="9" width="1" height="1" fill="#3fb7a0"/><rect x="7" y="9" width="1" height="1" fill="#3fb7a0"/></svg>', sunbreak: '<svg class="pxi" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="0" width="1" height="1" fill="#ffd45a"/><rect x="1" y="1" width="1" height="1" fill="#ffd45a"/><rect x="4" y="1" width="1" height="1" fill="#ffd45a"/><rect x="7" y="1" width="1" height="1" fill="#ffd45a"/><rect x="2" y="2" width="1" height="1" fill="#ffd45a"/><rect x="3" y="2" width="1" height="1" fill="#ffd45a"/><rect x="4" y="2" width="1" height="1" fill="#ffd45a"/><rect x="5" y="2" width="1" height="1" fill="#ffd45a"/><rect x="6" y="2" width="1" height="1" fill="#ffd45a"/><rect x="0" y="3" width="1" height="1" fill="#ffd45a"/><rect x="2" y="3" width="1" height="1" fill="#ffd45a"/><rect x="3" y="3" width="1" height="1" fill="#ffd45a"/><rect x="4" y="3" width="1" height="1" fill="#ffd45a"/><rect x="5" y="3" width="1" height="1" fill="#ffd45a"/><rect x="6" y="3" width="1" height="1" fill="#ffd45a"/><rect x="8" y="3" width="1" height="1" fill="#ffd45a"/><rect x="2" y="4" width="1" height="1" fill="#ffd45a"/><rect x="3" y="4" width="1" height="1" fill="#ffd45a"/><rect x="4" y="4" width="1" height="1" fill="#ffd45a"/><rect x="5" y="4" width="1" height="1" fill="#ffd45a"/><rect x="6" y="4" width="1" height="1" fill="#ffd45a"/><rect x="1" y="5" width="1" height="1" fill="#ffd45a"/><rect x="3" y="5" width="1" height="1" fill="#ffd45a"/><rect x="4" y="5" width="1" height="1" fill="#ffd45a"/><rect x="5" y="5" width="1" height="1" fill="#ffd45a"/><rect x="7" y="5" width="1" height="1" fill="#ffd45a"/><rect x="3" y="6" width="1" height="1" fill="#ffd45a"/><rect x="5" y="6" width="1" height="1" fill="#ffd45a"/><rect x="5" y="7" width="1" height="1" fill="#e8f0f0"/><rect x="5" y="8" width="1" height="1" fill="#e8f0f0"/><rect x="6" y="8" width="1" height="1" fill="#e8f0f0"/></svg>' };
 function renderMood() {
   const wx = WEATHER_ORDER.map(id => {
     const w = WEATHERS[id], lock = !isWeatherUnlocked(id), on = S.set.weather === id;
@@ -2836,9 +3455,16 @@ function handleSceneClick(sx, sy) {
   if (pl) openInspector(pl.id); else closeInspector();
 }
 function setupPointer() {
-  let ptr = null;
-  cv.addEventListener('pointerdown', e => { cv.setPointerCapture(e.pointerId); ptr = { id: e.pointerId, sx: e.clientX, sy: e.clientY, lx: e.clientX, drag: false }; });
+  let ptr = null; const pts = new Map(); let pinch = null;
+  const mid = () => { const a = [...pts.values()]; return { d: Math.hypot(a[0].x - a[1].x, a[0].y - a[1].y), x: (a[0].x + a[1].x) / 2 }; };
+  cv.addEventListener('pointerdown', e => {
+    cv.setPointerCapture(e.pointerId); pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pts.size === 2) { ptr = null; cv.classList.remove('drag'); const m = mid(); pinch = { d: m.d, sc: SC, x: m.x }; return; }
+    ptr = { id: e.pointerId, sx: e.clientX, sy: e.clientY, lx: e.clientX, drag: false };
+  });
   cv.addEventListener('pointermove', e => {
+    if (pts.has(e.pointerId)) pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pinch && pts.size >= 2) { const m = mid(); if (m.d > 10) zoomTo(pinch.sc * m.d / pinch.d, m.x); return; }
     const [wx, wy] = toWorld(e.clientX, e.clientY);
     if (ptr && ptr.id === e.pointerId) {
       if (!ptr.drag && Math.hypot(e.clientX - ptr.sx, e.clientY - ptr.sy) > 7) { ptr.drag = true; cv.classList.add('drag'); closeInspector(); }
@@ -2846,10 +3472,20 @@ function setupPointer() {
     }
     UI.hover = (UI.placing || UI.moving) ? pickSlotAt(wx, wy, true) : -1;
   });
-  const end = e => { if (ptr && ptr.id === e.pointerId) { const was = ptr.drag; ptr = null; cv.classList.remove('drag'); if (!was && e.type === 'pointerup') handleSceneClick(e.clientX, e.clientY); } };
+  const end = e => {
+    pts.delete(e.pointerId); if (pts.size < 2) pinch = null;
+    if (ptr && ptr.id === e.pointerId) { const was = ptr.drag; ptr = null; cv.classList.remove('drag'); if (!was && e.type === 'pointerup') handleSceneClick(e.clientX, e.clientY); }
+  };
   cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
   cv.addEventListener('pointerleave', () => { if (!ptr) UI.hover = -1; });
-  cv.addEventListener('wheel', e => { e.preventDefault(); panBy(-(Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY)); closeInspector(); }, { passive: false });
+  cv.addEventListener('wheel', e => {
+    e.preventDefault();
+    if (e.ctrlKey || e.metaKey) { zoomBy(Math.exp(-e.deltaY * .01), e.clientX); return; }
+    panBy(-(Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY)); closeInspector();
+  }, { passive: false });
+  document.getElementById('zoomIn').addEventListener('click', () => zoomBy(1.25));
+  document.getElementById('zoomOut').addEventListener('click', () => zoomBy(1 / 1.25));
+  document.getElementById('zoomFit').addEventListener('click', () => { if (SC > SC_MIN * 1.02) zoomFit(); else zoomHome(); });
 }
 
 /* ---------- inspector ---------- */
@@ -2998,6 +3634,7 @@ function wireEvents() {
     if (e.key === 'Escape') {
       if (!el.modalWrap.hidden) { if (el.modalWrap.dataset.kind !== 'x') closeModal(); } else if (UI.placing || UI.moving) cancelPlace(); else if (!el.inspector.hidden) closeInspector(); else if (panelTab) closePanel();
     } else if (e.key === 'ArrowLeft') panBy(90); else if (e.key === 'ArrowRight') panBy(-90);
+    else if (e.key === '+' || e.key === '=') zoomBy(1.25); else if (e.key === '-' || e.key === '_') zoomBy(1 / 1.25); else if (e.key === '0') { if (SC > SC_MIN * 1.02) zoomFit(); else zoomHome(); }
   });
   el.modalWrap.addEventListener('click', e => { if (e.target === el.modalWrap) { if (!S.intro) { S.intro = true; saveNow(); } closeModal(); } });
   let taps = 0, tapT = 0;
@@ -3020,7 +3657,7 @@ function boot() {
   setInterval(audioTick, 1000);
   setInterval(() => { if (panelTab === 'journey') refreshPanel(); }, 15000);
   if (!S.intro) setTimeout(showIntro, 600);
-  window.__grove = { S: () => S, W, ITEMS, ITEM_ORDER, SLOTS, setWeather, devFill, placeItem, strike, getSprite, spriteBounds, SPR, openInspector, closeInspector, toast, showSessionModal, MILESTONES, setDev };
+  window.__grove = { S: () => S, W, ITEMS, ITEM_ORDER, SLOTS, setWeather, devFill, placeItem, strike, getSprite, spriteBounds, SPR, openInspector, zoomBy, zoomTo, zoomFit, zoomHome, panBy, cam: () => ({ SC, SC0, SC_MIN, SC_MAX, offX, offY, panX }), closeInspector, toast, showSessionModal, MILESTONES, setDev };
 }
 boot();
 
