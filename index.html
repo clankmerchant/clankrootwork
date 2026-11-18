@@ -2489,6 +2489,65 @@ const PINES = [], BLOBS = [], JTREES = [];
   const R2 = rngf(1717);
   for (let u = -1700; u < 2000; u += 40 + R2() * 52) JTREES.push({ u, h: 70 + R2() * 90, r: 30 + R2() * 34, th: R2(), n: 3 + (R2() * 3 | 0), ph: R2() * TAU });
 })();
+
+/* Detailed jungle canopies for the distant rainforest: pre-rendered in the current haze tone, cached per tone */
+const BGSPR = new Map(), BGQ = 4.6, BGW = 520, BGH = 440, BGOX = 260, BGOY = 250;
+function bgCanopy(col, vi, contrast) {
+  const q = col.map(v => Math.round(v / 6) * 6), key = vi + '|' + contrast + '|' + q.join(',');
+  let sp = BGSPR.get(key); if (sp) return sp;
+  if (BGSPR.size > 90) BGSPR.clear();
+  const cv = document.createElement('canvas'); cv.width = BGW; cv.height = BGH;
+  const c = cv.getContext('2d'), R = rngf(vi * 131 + 9);
+  c.translate(BGOX, BGOY); c.scale(BGQ, BGQ);
+  const mixTo = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  const shade = mixTo(q, [q[0] * .5, q[1] * .55, q[2] * .6], contrast), mid = q, lite = mixTo(q, [Math.min(255, q[0] * 1.3 + 14), Math.min(255, q[1] * 1.35 + 34), Math.min(255, q[2] * 1.2 + 10)], contrast);
+  const clumps = [], n = 15;
+  for (let i = 0; i < n; i++) { const a = R() * TAU, d = Math.sqrt(R()), y = Math.sin(a) * d * 30; clumps.push({ x: Math.cos(a) * d * 44, y: y * (y > 0 ? .7 : 1), r: 12 + R() * 11 }); }
+  clumps.sort((A, B) => B.y - A.y);
+  /* branches into the crown */
+  c.strokeStyle = rgba(shade); c.lineWidth = 2.4; c.lineCap = 'round';
+  for (const s of [-1, 1]) { c.beginPath(); c.moveTo(0, 38); c.quadraticCurveTo(s * 10, 22, s * (20 + R() * 14), 8); c.stroke(); }
+  for (const k of clumps) {
+    c.fillStyle = rgba(shade); c.beginPath(); c.arc(k.x, k.y, k.r, 0, TAU); c.fill();
+    c.fillStyle = rgba(mid); c.beginPath(); c.arc(k.x - k.r * .12, k.y - k.r * .2, k.r * .86, 0, TAU); c.fill();
+    for (let j = 0; j < 12; j++) {
+      const a = R() * TAU, d = .55 + R() * .5, lx = k.x + Math.cos(a) * k.r * d, ly = k.y + Math.sin(a) * k.r * d, up = Math.max(0, -Math.sin(a) * .7 + .3);
+      c.save(); c.translate(lx, ly); c.rotate(a + Math.PI / 2); c.fillStyle = rgba(mixTo(mid, up > .35 ? lite : shade, .35 + .5 * up));
+      c.beginPath(); c.ellipse(0, 0, k.r * .17, k.r * .36, 0, 0, TAU); c.fill(); c.restore();
+    }
+    c.fillStyle = rgba(lite, .55); for (let j = 0; j < 5; j++) { const a = -Math.PI * (.2 + R() * .6), d = R() * .5; c.beginPath(); c.ellipse(k.x + Math.cos(a) * k.r * d - k.r * .1, k.y + Math.sin(a) * k.r * d - k.r * .15, k.r * .22, k.r * .13, -.4, 0, TAU); c.fill(); }
+  }
+  /* hanging lianas */
+  c.strokeStyle = rgba(shade); c.lineWidth = .9;
+  for (let i = 0; i < 8; i++) { const k = clumps[(R() * 7) | 0], x = k.x + (R() - .5) * k.r, y = k.y + k.r * .7, L = 12 + R() * 30; c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(x + (R() - .5) * 6, y + L * .5, x + (R() - .5) * 4, y + L); c.stroke(); }
+  sp = { cv }; BGSPR.set(key, sp); return sp;
+}
+
+/* Detailed conifers for the home-biome tree line: tiers of drooping, needle-edged boughs, cached per tone */
+const PSPR = new Map(), PQ = 4.6, PW = 300, PH = 520, POX = 150, POY = 490;
+function bgPine(col, vi, contrast) {
+  const q = col.map(v => Math.round(v / 6) * 6), key = vi + '|' + contrast + '|' + q.join(',');
+  let sp = PSPR.get(key); if (sp) return sp;
+  if (PSPR.size > 60) PSPR.clear();
+  const cv = document.createElement('canvas'); cv.width = PW; cv.height = PH;
+  const c = cv.getContext('2d'), R = rngf(vi * 71 + 3);
+  c.translate(POX, POY); c.scale(PQ, PQ);
+  const mixTo = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  const shade = mixTo(q, [q[0] * .5, q[1] * .55, q[2] * .6], contrast), lite = mixTo(q, [Math.min(255, q[0] * 1.3 + 12), Math.min(255, q[1] * 1.3 + 28), Math.min(255, q[2] * 1.2 + 14)], contrast);
+  c.fillStyle = rgba(shade); c.fillRect(-1.5, -14, 3, 14);
+  const T = 6 + (vi % 2), lean = (R() - .5) * 3;
+  for (let i = 0; i < T; i++) {
+    const t = i / (T - 1), yb = -(10 + t * 80), w = 25 * (1 - t * .78) + 3.5 + R() * 2, h = 30 - t * 10, ax = lean * t * 3;
+    const edge = []; const m = 7;
+    for (let j = 0; j <= m; j++) { const u = j / m, x = -w + 2 * w * u; edge.push([x, yb + (j % 2 ? 4.5 : 0) + Math.sin(u * Math.PI) * 4 + (R() - .5) * 1.2]); }
+    c.beginPath(); c.moveTo(ax, yb - h); edge.forEach(e => c.lineTo(e[0], e[1])); c.closePath(); c.fillStyle = rgba(shade); c.fill();
+    c.beginPath(); c.moveTo(ax, yb - h); for (const e of edge) { if (e[0] > ax + 1) break; c.lineTo(e[0], e[1]); } c.lineTo(ax, yb + 3); c.closePath(); c.fillStyle = rgba(mixTo(q, lite, .55)); c.fill();
+    c.strokeStyle = rgba(lite, .5); c.lineWidth = .6; c.beginPath();
+    for (let j = 0; j < 5; j++) { const e = edge[1 + ((R() * (m - 1)) | 0)], k = (e[0] - ax) / w; c.moveTo(ax + k * w * .2, yb - h * .45 * (1 - Math.abs(k) * .3)); c.lineTo(e[0], e[1] - 1); }
+    c.stroke();
+  }
+  sp = { cv }; PSPR.set(key, sp); return sp;
+}
 const STARS = []; (function () { const R = rngf(31); for (let i = 0; i < 190; i++) STARS.push({ x: R(), y: Math.pow(R(), 1.3), r: .4 + R() * 1.3, ph: R() * TAU }); })();
 const CLOUDS = []; (function () { const R = rngf(55); for (let i = 0; i < 8; i++) CLOUDS.push({ x: R() * 1.6, y: .06 + R() * .5, w: .42 + R() * .42, h: .12 + R() * .1, sp: .004 + R() * .008, a: .5 + R() * .5 }); })();
 const GRASS = []; (function () { const R = rngf(909); for (let i = 0; i < 360; i++) GRASS.push({ x: WX0 + R() * WORLD_SPAN, y: 872 + R() * 36, h: 16 + R() * 26, ph: R() * TAU, hue: 98 + R() * 36, l: 18 + R() * 20 }); })();
@@ -2721,37 +2780,46 @@ function render(dt, t) {
   hill(.22, HORIZON - 4, 110, .0036, cFar, 1);
   /* far tree line: conifers thin out as broadleaf canopy takes over */
   const farTone = mixc(cFar, [10, 26, 26], .25);
-  ctx.fillStyle = rgba(farTone); ctx.beginPath();
   for (const pn of PINES) {
-    const sx = pn.u * SC + offX * .22; if (sx < -30 || sx > VW + 30) continue;
+    const sx = pn.u * SC + offX * .22; if (sx < -40 || sx > VW + 40) continue;
     if (lushAtScreen(sx) > pn.th * .9 + .05) continue;
     const by = offY + (HORIZON - 4 - 110 * hn(pn.u * .0036 + 1) + 6) * SC, h = pn.h * SC * .8, w = pn.w * SC;
-    ctx.moveTo(sx, by - h); ctx.lineTo(sx + w, by); ctx.lineTo(sx - w, by); ctx.moveTo(sx, by - h * .7); ctx.lineTo(sx + w * 1.3, by - h * .08); ctx.lineTo(sx - w * 1.3, by - h * .08);
+    const sp = bgPine(farTone, (pn.th * 6) | 0, .5), fy = h / 98, fx = w / 15;
+    ctx.drawImage(sp.cv, sx - POX / PQ * fx, by - POY / PQ * fy, PW / PQ * fx, PH / PQ * fy);
   }
-  ctx.fill();
   {
-    const jc = mixc(farTone, [18, 78, 52], .55); ctx.fillStyle = rgba(jc); ctx.beginPath();
+    const jc = mixc(farTone, [18, 78, 52], .55), trunkC = rgba(mixc(jc, [6, 16, 12], .45));
     for (const j of JTREES) {
-      const sx = j.u * SC + offX * .22; if (sx < -120 || sx > VW + 120) continue;
+      const sx = j.u * SC + offX * .22; if (sx < -140 || sx > VW + 140) continue;
       const L = lushAtScreen(sx); if (L < j.th * .85 + .02) continue;
       const by = offY + (HORIZON - 4 - 110 * hn(j.u * .0036 + 1) + 6) * SC, gr = clamp((L - j.th * .85) * 3, .35, 1), hh = j.h * SC * gr, rr = j.r * SC * (.8 + gr * .35);
-      for (let q = 0; q < j.n; q++) { const a = j.ph + q * 2.1, cx = sx + Math.cos(a) * rr * .8, cy = by - hh + Math.sin(a) * rr * .35; ctx.moveTo(cx + rr * .85, cy); ctx.arc(cx, cy, rr * .85, 0, TAU); }
-      ctx.moveTo(sx - 3 * SC, by); ctx.lineTo(sx - 2 * SC, by - hh); ctx.lineTo(sx + 2 * SC, by - hh); ctx.lineTo(sx + 3 * SC, by);
+      ctx.fillStyle = trunkC; ctx.beginPath(); ctx.moveTo(sx - 4.5 * SC, by); ctx.quadraticCurveTo(sx - 1.6 * SC, by - hh * .2, sx - 1.7 * SC, by - hh); ctx.lineTo(sx + 1.7 * SC, by - hh); ctx.quadraticCurveTo(sx + 1.6 * SC, by - hh * .2, sx + 4.5 * SC, by); ctx.closePath(); ctx.fill();
+      const f = rr / 40, sp = bgCanopy(jc, (j.n * 3 + ((j.th * 7) | 0)) % 6, .55);
+      ctx.globalAlpha = clamp(gr * 1.4, 0, 1);
+      ctx.drawImage(sp.cv, sx - BGOX / BGQ * f, by - hh - BGOY / BGQ * f, BGW / BGQ * f, BGH / BGQ * f); ctx.globalAlpha = 1;
     }
-    ctx.fill();
   }
   const fogG = ctx.createLinearGradient(0, horizY - 140 * SC, 0, horizY + 40 * SC);
   fogG.addColorStop(0, rgba(W.fogCol, 0)); fogG.addColorStop(.65, rgba(W.fogCol, .55 * W.fog)); fogG.addColorStop(1, rgba(W.fogCol, 0));
   ctx.fillStyle = fogG; ctx.fillRect(0, horizY - 140 * SC, VW, 180 * SC);
   hill(.5, HORIZON + 14, 70, .0058, cMid, 4);
-  ctx.fillStyle = rgba(mixc(cMid, [8, 22, 22], .3)); ctx.beginPath();
+  ctx.fillStyle = rgba(mixc(cMid, [8, 22, 22], .3)); ctx.beginPath(); const lushBlobs = [];
   for (const b of BLOBS) {
     const sx = b.u * SC + offX * .5; if (sx < -60 || sx > VW + 60) continue;
     const L = lushAtScreen(sx), by = offY + (HORIZON + 14 - 70 * hn(b.u * .0058 + 4) + 10 + b.dy) * SC, r = b.r * SC * (1 + L * .55);
-    if (L > .3 && b.th < L) { ctx.moveTo(sx + r * 1.4, by - r * .9); ctx.ellipse(sx, by - r * .9, r * 1.4, r * 1.05, 0, 0, TAU); }
+    if (L > .3 && b.th < L) { ctx.moveTo(sx + r * 1.4, by - r * .9); ctx.ellipse(sx, by - r * .9, r * 1.4, r * 1.05, 0, 0, TAU); lushBlobs.push([sx, by, r, L, b]); }
     ctx.moveTo(sx + r, by - r * .6); ctx.arc(sx, by - r * .6, r, 0, TAU);
   }
   ctx.fill();
+  { const hc = mixc(mixc(cMid, [22, 64, 58], .3), [8, 22, 22], .1);
+    for (const b of BLOBS) {
+      const sx = b.u * SC + offX * .5; if (sx < -80 || sx > VW + 80) continue;
+      const L = lushAtScreen(sx), a = 1 - clamp((L - .3) * 3, 0, 1); if (a < .02) continue;
+      const r = b.r * SC * (1 + L * .55), by = offY + (HORIZON + 14 - 70 * hn(b.u * .0058 + 4) + 10 + b.dy) * SC, f = r / 52, sp = bgCanopy(hc, 6 + Math.abs((b.u * .1) | 0) % 6, .7);
+      ctx.globalAlpha = a; ctx.drawImage(sp.cv, sx - BGOX / BGQ * f, by - r * .6 - BGOY / BGQ * f, BGW / BGQ * f, BGH / BGQ * f);
+    } ctx.globalAlpha = 1; }
+  { const mc = mixc(mixc(cMid, [18, 84, 50], .42), [8, 22, 22], .12);
+    for (const [sx, by, r, L, b] of lushBlobs) { const f = r / 40, sp = bgCanopy(mc, ((b.u * .1) & 7) % 6 < 0 ? 0 : Math.abs(((b.u * .1) | 0) % 6), .8); ctx.globalAlpha = clamp((L - .3) * 3, 0, 1); ctx.drawImage(sp.cv, sx - BGOX / BGQ * f, by - r * .9 - BGOY / BGQ * f, BGW / BGQ * f, BGH / BGQ * f); } ctx.globalAlpha = 1; }
   const fg2 = ctx.createLinearGradient(0, horizY - 60 * SC, 0, horizY + 50 * SC);
   fg2.addColorStop(0, rgba(W.fogCol, 0)); fg2.addColorStop(.6, rgba(W.fogCol, .5 * W.fog)); fg2.addColorStop(1, rgba(W.fogCol, 0));
   ctx.fillStyle = fg2; ctx.fillRect(0, horizY - 60 * SC, VW, 110 * SC);
